@@ -20,24 +20,22 @@
 html{scroll-behavior:smooth;overflow-x:hidden}
 body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
 
-/* ── LOGIN GATE ── */
+/* LOGIN */
 #login-gate{position:fixed;inset:0;background:#1e1e1e;z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem}
 .login-box{background:#2a2a2a;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:48px 40px;width:100%;max-width:400px;text-align:center}
-.login-logo{margin-bottom:24px}
-.login-title{color:#fff;font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px}
-.login-sub{color:rgba(255,255,255,0.35);font-size:13px;margin-bottom:32px}
 .login-label{display:block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:5px;text-align:left}
 .login-input{width:100%;padding:11px 14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:14px;font-family:inherit;outline:none;margin-bottom:14px}
 .login-input:focus{border-color:rgba(74,253,14,.4)}
 .login-btn{width:100%;padding:13px;background:#4AFD0E;color:#111;border:none;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;cursor:pointer}
 .login-btn:hover{background:#5fff1a}
 .login-err{margin-top:12px;background:rgba(192,57,43,.18);border:1px solid rgba(192,57,43,.35);border-radius:8px;padding:9px 14px;color:#ffa0a0;font-size:13px;display:none}
-.login-footer{margin-top:28px;color:rgba(255,255,255,.15);font-size:11px}
 
-/* ── NAV ── */
+/* NAV */
 .nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 24px rgba(0,0,0,.4)}
 .nav-left{display:flex;align-items:center;gap:12px}
-.nav-logo{height:30px}
+.nav-back{color:rgba(255,255,255,.5);text-decoration:none;font-size:20px;font-weight:700;line-height:1;padding:4px 8px;border-radius:6px;transition:all .15s}
+.nav-back:hover{color:var(--green);background:rgba(255,255,255,.06)}
+.nav-logo{height:28px}
 .nav-divider{width:1px;height:20px;background:rgba(255,255,255,.15);margin:0 4px}
 .nav-section{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .nav-right{display:flex;align-items:center;gap:12px}
@@ -45,34 +43,40 @@ body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--
 .nav-link:hover{color:#fff}
 .nav-avatar{width:32px;height:32px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Montserrat',sans-serif}
 
-/* ── HERO ── */
+/* HERO */
 .hero{background:var(--navy);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;top:-80px;right:-40px;width:340px;height:340px;background:radial-gradient(circle,rgba(74,253,14,.07) 0%,transparent 70%);pointer-events:none}
 .hero-inner{max-width:1100px;margin:0 auto}
 .hero-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem;opacity:.8}
 .hero-title{font-family:'Montserrat',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:.75rem;letter-spacing:-.02em}
 .hero-title span{color:var(--green)}
-.hero-sub{font-size:13px;color:rgba(255,255,255,.5);max-width:500px;line-height:1.7}
-.hero-stats{display:flex;gap:2.5rem;margin-top:2rem;flex-wrap:wrap}
-.stat{border-left:2px solid var(--green);padding-left:1rem}
-.stat-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:800;color:#fff;line-height:1}
-.stat-label{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.5);max-width:540px;line-height:1.7}
 
-/* ── SHELL ── */
+/* SHELL */
 .shell{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 5rem}
 .section-head{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
 .section-head h2{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);white-space:nowrap}
 .section-line{flex:1;height:1px;background:var(--border)}
 .section-tag{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);font-family:'Montserrat',sans-serif;white-space:nowrap}
 
-/* ── CREATE CAMPAIGN CARD ── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;margin-bottom:2.5rem}
-.card-header{background:var(--navy);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+/* STEP MARKERS */
+.step-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--navy);color:var(--green);border-radius:50%;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;margin-right:4px}
+
+/* CARD */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;margin-bottom:2rem}
+.card-header{background:var(--navy);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .card-header h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#fff}
 .card-header p{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
 .card-body{padding:1.5rem}
 
-/* ── FORM GRID ── */
+/* CAMPAIGN SELECTOR */
+.camp-switcher{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;margin-bottom:1rem}
+.camp-switcher .field{flex:1;min-width:240px}
+.btn-toggle{padding:10px 18px;background:var(--offwhite);border:1px solid var(--border2);border-radius:var(--radius);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;white-space:nowrap}
+.btn-toggle:hover{background:#dddcda}
+.btn-toggle.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* FORM */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .form-grid.three{grid-template-columns:1fr 1fr 1fr}
 .form-full{grid-column:1/-1}
@@ -80,635 +84,678 @@ body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--
 .field label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
 .field input,.field select,.field textarea{padding:10px 14px;border:1px solid var(--border2);border-radius:var(--radius);font-size:13px;font-family:inherit;color:var(--text);background:var(--offwhite);transition:border .15s,background .15s}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy);background:#fff}
-.field textarea{resize:vertical;min-height:80px}
+.field textarea{resize:vertical;min-height:70px}
 .field-hint{font-size:11px;color:var(--text3);margin-top:2px}
 
-/* ── SLUG PREVIEW ── */
-.slug-preview{background:var(--navy);border-radius:var(--radius);padding:12px 16px;margin-top:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+/* ACTIVE CAMPAIGN BANNER */
+.active-camp{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius-lg);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.active-camp-icon{width:46px;height:46px;background:rgba(74,253,14,.12);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.active-camp-info{flex:1}
+.active-camp-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#fff}
+.active-camp-meta{font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
+.active-camp-change{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.7);border-radius:var(--radius);padding:7px 14px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;cursor:pointer}
+.active-camp-change:hover{background:rgba(255,255,255,.08);color:#fff}
+
+/* QUICK ADD ROLES */
+.quick-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem}
+.quick-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem}
+.quick-btn{padding:8px 14px;border:1px solid var(--border2);border-radius:20px;background:var(--surface);font-family:'Montserrat',sans-serif;font-size:12px;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
+.quick-btn:hover{border-color:var(--navy);background:var(--navy);color:#fff}
+.quick-btn .qb-cat{font-size:9px;opacity:.6;font-weight:700}
+.quick-btn.ops{border-left:3px solid var(--green)}
+.quick-btn.mgmt{border-left:3px solid var(--amber)}
+.quick-btn.support{border-left:3px solid #6c8cff}
+.quick-btn.custom{border-style:dashed}
+
+/* ROLE FORM (collapsible) */
+.role-form{border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;background:var(--offwhite);margin-bottom:1.5rem;display:none}
+.role-form.show{display:block}
+.role-form-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.role-form-head h4{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.role-form-close{background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer;line-height:1}
+.role-form-close:hover{color:var(--red)}
+
+/* SLUG + QR */
+.slug-preview{background:var(--navy);border-radius:var(--radius);padding:10px 14px;margin-top:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .slug-url{font-family:'Montserrat',sans-serif;font-size:12px;color:var(--green);word-break:break-all}
 .slug-copy{background:none;border:1px solid rgba(74,253,14,.3);border-radius:6px;padding:5px 12px;color:var(--green);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap}
 .slug-copy:hover{background:rgba(74,253,14,.1)}
 
-/* ── QR PLACEHOLDER ── */
-.qr-wrap{display:flex;align-items:center;gap:1.5rem;background:var(--offwhite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-top:1rem}
-.qr-box{width:80px;height:80px;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.qr-box canvas{display:block}
-.qr-info h4{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px}
-.qr-info p{font-size:11px;color:var(--text3);line-height:1.5}
-.btn-qr{margin-top:8px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif}
-.btn-qr:hover{background:var(--navy2)}
-
-/* ── BUTTONS ── */
-.btn-row{display:flex;gap:10px;margin-top:1.5rem;justify-content:flex-end}
+/* BUTTONS */
+.btn-row{display:flex;gap:10px;margin-top:1.25rem;justify-content:flex-end}
 .btn{padding:10px 24px;border:none;border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .15s}
 .btn-primary{background:var(--green);color:#111}
 .btn-primary:hover{background:#5fff1a;transform:translateY(-1px);box-shadow:0 4px 16px rgba(74,253,14,.3)}
 .btn-primary:disabled{opacity:.5;pointer-events:none}
 .btn-ghost{background:var(--offwhite);color:var(--text);border:1px solid var(--border2)}
 .btn-ghost:hover{background:#dddcda}
-
-/* ── SAVE RESULT ── */
-.save-result{font-size:12px;margin-top:.75rem;text-align:right;min-height:18px}
+.save-result{font-size:12px;margin-top:.5rem;text-align:right;min-height:18px}
 .save-ok{color:var(--green-dark)}
 .save-err{color:var(--red)}
 
-/* ── CAMPAIGNS TABLE ── */
-.camp-table-wrap{overflow-x:auto}
-.camp-table{width:100%;border-collapse:collapse;font-size:13px}
-.camp-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
-.camp-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:middle}
-.camp-table tr:last-child td{border-bottom:none}
-.camp-table tr:hover td{background:var(--offwhite)}
-.camp-table tr.inactive td{opacity:.5}
-.lob-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;font-family:'Montserrat',sans-serif;background:var(--surface2);color:var(--text2)}
-.active-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px}
-.inactive-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--border2);margin-right:6px}
-.tbl-link{color:var(--navy);text-decoration:none;font-weight:600}
-.tbl-link:hover{color:var(--green-dark)}
-.tbl-actions{display:flex;gap:6px}
-.btn-sm{padding:4px 12px;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif}
+/* ROLES LIST */
+.roles-wrap{margin-top:.5rem}
+.role-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-bottom:.75rem;display:flex;align-items:center;gap:1rem}
+.role-rank{width:40px;height:40px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;flex-shrink:0;color:#fff}
+.rank-ops{background:var(--green-dark)}
+.rank-mgmt{background:var(--amber)}
+.rank-support{background:#6c8cff}
+.role-info{flex:1;min-width:0}
+.role-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text)}
+.role-meta{font-size:11px;color:var(--text3);margin-top:2px}
+.role-cat-pill{display:inline-block;font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.04em}
+.cat-ops{background:var(--green-light);color:var(--green-dark)}
+.cat-mgmt{background:#fff3cd;color:#856404}
+.cat-support{background:#e8edff;color:#3a52cc}
+.role-actions{display:flex;gap:6px;flex-shrink:0}
+.btn-sm{padding:5px 12px;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif}
 .btn-sm-navy{background:var(--navy);color:#fff}
 .btn-sm-navy:hover{background:var(--navy2)}
-.btn-sm-ghost{background:var(--surface2);color:var(--text2);border:1px solid var(--border2)}
-.btn-sm-ghost:hover{background:#dddcda}
-.btn-sm-red{background:#fdf0ef;color:var(--red);border:1px solid #f5c6c2}
-.btn-sm-red:hover{background:#f5c6c2}
-.empty-row td{text-align:center;padding:2rem;color:var(--text3);font-style:italic}
+.btn-sm-green{background:var(--green-light);color:var(--green-dark);border:1px solid #bfe89a}
+.btn-sm-green:hover{background:#d9f5b8}
+.role-apps{text-align:right;flex-shrink:0;min-width:54px}
+.role-apps-num{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:800;color:var(--text)}
+.role-apps-lbl{font-size:10px;color:var(--text3)}
+.roles-empty{text-align:center;padding:2rem;color:var(--text3);font-size:13px;font-style:italic}
 
-/* ── FOOTER ── */
+/* LOCKED STATE */
+.locked{opacity:.4;pointer-events:none}
+.lock-note{background:var(--offwhite);border:1px dashed var(--border2);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;color:var(--text3);font-size:13px}
+
+/* FOOTER */
 .footer{background:var(--navy);padding:1.25rem 2rem}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.footer-logo{height:20px}
 .footer-note{font-size:11px;color:rgba(255,255,255,.2)}
 
-/* ── TOAST ── */
-.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:#fff;padding:12px 20px;border-radius:var(--radius-lg);font-size:13px;box-shadow:0 8px 32px rgba(0,0,0,.3);border-left:4px solid var(--green);transform:translateY(20px);opacity:0;transition:all .25s;z-index:9998;max-width:320px}
+/* TOAST */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:#fff;padding:12px 20px;border-radius:var(--radius-lg);font-size:13px;box-shadow:0 8px 32px rgba(0,0,0,.3);border-left:4px solid var(--green);transform:translateY(20px);opacity:0;transition:all .25s;z-index:9998;max-width:340px}
 .toast.show{transform:translateY(0);opacity:1}
 .toast.error{border-left-color:var(--red)}
 
-@media(max-width:760px){
-  .form-grid,.form-grid.three{grid-template-columns:1fr}
-  .form-full{grid-column:1}
-  .shell{padding:1.5rem 1rem 4rem}
-  .hero-title{font-size:22px}
-  .btn-row{flex-direction:column}
-}
+@media(max-width:760px){.form-grid,.form-grid.three{grid-template-columns:1fr}.form-full{grid-column:1}.shell{padding:1.5rem 1rem 4rem}.hero-title{font-size:22px}.btn-row{flex-direction:column}}
 </style>
 </head>
 <body>
 
-<!-- ── LOGIN GATE ── -->
+<!-- LOGIN -->
 <div id="login-gate">
   <div class="login-box">
-    <div class="login-logo">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 60" height="36">
-        <rect x="0"  y="0" width="14" height="60" rx="7" fill="#A2E000"/>
-        <rect x="19" y="0" width="14" height="60" rx="7" fill="#4AFD0E"/>
-        <rect x="38" y="0" width="14" height="60" rx="7" fill="#1AAA00"/>
-      </svg>
-    </div>
-    <div class="login-title">Recruitment Portal</div>
-    <div class="login-sub">Trilogy CX (Pty) Ltd · Authorised staff only</div>
-    <div style="margin-bottom:14px;text-align:left">
-      <label class="login-label">Username</label>
-      <input id="usr" type="text" class="login-input" placeholder="Username" autocomplete="username"
-        onkeydown="if(event.key==='Enter')document.getElementById('pwd').focus()">
-    </div>
-    <div style="margin-bottom:22px;text-align:left">
-      <label class="login-label">Password</label>
-      <input id="pwd" type="password" class="login-input" placeholder="Password" autocomplete="current-password"
-        onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
+    <img src="trilogy-logo.png" alt="Trilogy BPO" style="height:36px;margin-bottom:24px">
+    <div style="color:#fff;font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px">Recruitment Portal</div>
+    <div style="color:rgba(255,255,255,0.35);font-size:13px;margin-bottom:32px">Trilogy CX (Pty) Ltd · Authorised staff only</div>
+    <div style="margin-bottom:14px;text-align:left"><label class="login-label">Username</label>
+      <input id="usr" type="text" class="login-input" placeholder="Username" autocomplete="username" onkeydown="if(event.key==='Enter')document.getElementById('pwd').focus()"></div>
+    <div style="margin-bottom:22px;text-align:left"><label class="login-label">Password</label>
+      <input id="pwd" type="password" class="login-input" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
     <button class="login-btn" onclick="doLogin()">Sign in</button>
     <div id="login-err" class="login-err">Incorrect username or password.</div>
-    <div class="login-footer">Trilogy CX (Pty) Ltd · Internal use only</div>
+    <div style="margin-top:28px;color:rgba(255,255,255,.15);font-size:11px">Trilogy CX (Pty) Ltd · Internal use only</div>
   </div>
 </div>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav class="nav">
   <div class="nav-left">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 60" height="28" class="nav-logo">
-      <rect x="0"  y="0" width="14" height="60" rx="7" fill="#A2E000"/>
-      <rect x="19" y="0" width="14" height="60" rx="7" fill="#4AFD0E"/>
-      <rect x="38" y="0" width="14" height="60" rx="7" fill="#1AAA00"/>
-    </svg>
-    <div class="nav-divider"></div>
-    <div class="nav-section">Recruitment Portal</div>
-    <div class="nav-divider"></div>
-    <div class="nav-section" style="color:rgba(255,255,255,.6)">Campaign Manager</div>
+    <a href="index.html" class="nav-back" title="Back to Recruitment Portal">←</a>
+    <img src="trilogy-logo.png" alt="Trilogy BPO" class="nav-logo">
+    <div class="nav-divider"></div><div class="nav-section">Recruitment Portal</div>
+    <div class="nav-divider"></div><div class="nav-section" style="color:rgba(255,255,255,.6)">Campaign Manager</div>
   </div>
   <div class="nav-right">
     <a href="index.html" class="nav-link">Dashboard</a>
-    <div class="nav-divider"></div>
-    <div class="nav-avatar" id="navAvatar">R</div>
+    <div class="nav-divider"></div><div class="nav-avatar">R</div>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-label">Trilogy BPO · Recruitment</div>
     <h1 class="hero-title">Campaign <span>Manager.</span></h1>
-    <p class="hero-sub">Create a campaign to generate the unique application URL and QR code for each job posting. Every candidate application flows through a campaign.</p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Total campaigns</div></div>
-      <div class="stat"><div class="stat-num" id="statActive">—</div><div class="stat-label">Active campaigns</div></div>
-      <div class="stat"><div class="stat-num" id="statApplications">—</div><div class="stat-label">Total applications</div></div>
-    </div>
+    <p class="hero-sub">Create a campaign, then add the roles you're recruiting for — Agents, Team Leaders, Ops Managers, support staff. Each role gets its own application link and QR code.</p>
   </div>
 </div>
 
 <div class="shell">
 
-  <!-- ── CREATE CAMPAIGN ── -->
+  <!-- ── STEP 1: CAMPAIGN ── -->
   <div class="section-head">
-    <h2>Create new campaign</h2>
+    <h2><span class="step-badge">1</span>Campaign</h2>
     <div class="section-line"></div>
-    <div class="section-tag">Fill all required fields</div>
+    <div class="section-tag">The engagement</div>
   </div>
 
   <div class="card">
     <div class="card-header">
-      <div>
-        <h3>New campaign</h3>
-        <p>Each campaign generates a unique application URL — one per job posting or LOB intake</p>
-      </div>
+      <div><h3>Select or create a campaign</h3><p>A campaign is the client engagement or LOB intake — roles sit underneath it</p></div>
     </div>
     <div class="card-body">
 
-      <div class="form-grid" style="margin-bottom:1rem">
+      <!-- Switcher -->
+      <div class="camp-switcher" id="campSwitcher">
         <div class="field">
-          <label>Campaign title *</label>
-          <input type="text" id="fTitle" placeholder="e.g. Customer Service Agent — Q3 2026">
-        </div>
-        <div class="field">
-          <label>Campaign code *</label>
-          <input type="text" id="fCode" placeholder="e.g. TBP-CS-2026-01" oninput="updateSlug()">
-          <span class="field-hint">Auto-filled from title — edit if needed</span>
-        </div>
-      </div>
-
-      <div class="form-grid three" style="margin-bottom:1rem">
-        <div class="field">
-          <label>Line of business (LOB) *</label>
-          <select id="fLOB">
-            <option value="">— Select LOB —</option>
-            <option>Customer Service</option>
-            <option>Sales</option>
-            <option>Collections</option>
-            <option>Utilities</option>
-            <option>Technical Support</option>
-            <option>Back Office</option>
+          <label>Existing campaign</label>
+          <select id="campSelect" onchange="onCampaignSelect()">
+            <option value="">— Select a campaign —</option>
           </select>
         </div>
-        <div class="field">
-          <label>Job title *</label>
-          <input type="text" id="fJobTitle" placeholder="e.g. Customer Service Agent">
-        </div>
-        <div class="field">
-          <label>Department</label>
-          <input type="text" id="fDept" placeholder="e.g. Operations">
-        </div>
+        <button class="btn-toggle" id="newCampToggle" onclick="toggleNewCampaign()">+ New campaign</button>
       </div>
 
-      <div class="form-grid three" style="margin-bottom:1rem">
-        <div class="field">
-          <label>Target headcount</label>
-          <input type="number" id="fHeadcount" placeholder="e.g. 20" min="1">
+      <!-- New campaign form -->
+      <div id="newCampForm" style="display:none">
+        <div class="form-grid" style="margin-bottom:1rem">
+          <div class="field">
+            <label>Campaign title *</label>
+            <input type="text" id="cTitle" placeholder="e.g. OakHouse Foods — CS Intake" oninput="autoCampCode()">
+          </div>
+          <div class="field">
+            <label>Campaign code *</label>
+            <input type="text" id="cCode" placeholder="e.g. TBP-OAK-2026-01">
+            <span class="field-hint">Auto-filled from title — edit if needed</span>
+          </div>
         </div>
-        <div class="field">
-          <label>Offered salary (ZAR)</label>
-          <input type="number" id="fSalary" placeholder="e.g. 8500" min="0">
+        <div class="form-grid three">
+          <div class="field">
+            <label>Client</label>
+            <input type="text" id="cClient" placeholder="e.g. OakHouse Foods Ltd">
+          </div>
+          <div class="field">
+            <label>Line of business *</label>
+            <select id="cLOB">
+              <option value="">— Select LOB —</option>
+              <option>Customer Service</option><option>Sales</option><option>Collections</option>
+              <option>Utilities</option><option>Technical Support</option><option>Back Office</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Department</label>
+            <input type="text" id="cDept" placeholder="e.g. Operations">
+          </div>
         </div>
-        <div class="field">
-          <label>Target start date</label>
-          <input type="date" id="fStartDate">
+        <div class="btn-row">
+          <button class="btn btn-ghost" onclick="cancelNewCampaign()">Cancel</button>
+          <button class="btn btn-primary" id="cSaveBtn" onclick="saveCampaign()">Create campaign</button>
         </div>
+        <div class="save-result" id="cSaveResult"></div>
       </div>
-
-      <div class="form-grid" style="margin-bottom:1rem">
-        <div class="field">
-          <label>Reports to (manager name)</label>
-          <input type="text" id="fReportsTo" placeholder="e.g. Tanya Phillips">
-        </div>
-        <div class="field">
-          <label>Reports to (email)</label>
-          <input type="email" id="fReportsToEmail" placeholder="e.g. tanyap@trilogybpo.com">
-        </div>
-      </div>
-
-      <div class="form-grid" style="margin-bottom:1rem">
-        <div class="field">
-          <label>Assessment pass score (%)</label>
-          <input type="number" id="fPassScore" placeholder="e.g. 65" min="0" max="100">
-          <span class="field-hint">Pivotal Talent threshold for this LOB — leave blank to shortlist manually</span>
-        </div>
-        <div class="field">
-          <label>Pivotal battery ID</label>
-          <input type="text" id="fBatteryID" placeholder="e.g. PT-CS-001">
-          <span class="field-hint">From Pivotal Talent — leave blank until credentials are confirmed</span>
-        </div>
-      </div>
-
-      <!-- URL preview -->
-      <div class="slug-preview" id="slugPreview" style="display:none">
-        <span class="slug-url" id="slugUrl"></span>
-        <button class="slug-copy" onclick="copySlug()">Copy link</button>
-      </div>
-
-      <!-- QR code -->
-      <div class="qr-wrap" id="qrWrap" style="display:none">
-        <div class="qr-box"><canvas id="qrCanvas"></canvas></div>
-        <div class="qr-info">
-          <h4>QR code — ready to download</h4>
-          <p>Print or embed this QR code in job ads. It routes directly to the application form for this campaign.</p>
-          <button class="btn-qr" onclick="downloadQR()">Download QR code</button>
-        </div>
-      </div>
-
-      <div class="btn-row">
-        <button class="btn btn-ghost" onclick="resetForm()">Clear</button>
-        <button class="btn btn-primary" id="saveBtn" onclick="saveCampaign()">Create campaign</button>
-      </div>
-      <div class="save-result" id="saveResult"></div>
 
     </div>
   </div>
 
-  <!-- ── CAMPAIGNS LIST ── -->
+  <!-- ── STEP 2: ROLES ── -->
   <div class="section-head">
-    <h2>All campaigns</h2>
+    <h2><span class="step-badge">2</span>Roles</h2>
     <div class="section-line"></div>
-    <div class="section-tag" id="campCount">Loading…</div>
+    <div class="section-tag" id="rolesTag">Select a campaign first</div>
   </div>
 
-  <div class="card">
-    <div class="card-body" style="padding:0">
-      <div class="camp-table-wrap">
-        <table class="camp-table">
-          <thead>
-            <tr>
-              <th>Campaign</th>
-              <th>LOB</th>
-              <th>Job title</th>
-              <th>Target</th>
-              <th>Start date</th>
-              <th>Status</th>
-              <th>Applications</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody id="campTableBody">
-            <tr class="empty-row"><td colspan="8">Loading campaigns…</td></tr>
-          </tbody>
-        </table>
+  <!-- Active campaign banner -->
+  <div class="active-camp" id="activeCampBanner" style="display:none">
+    <div class="active-camp-icon">📣</div>
+    <div class="active-camp-info">
+      <div class="active-camp-title" id="acTitle">—</div>
+      <div class="active-camp-meta" id="acMeta">—</div>
+    </div>
+    <button class="active-camp-change" onclick="changeCampaign()">Change</button>
+  </div>
+
+  <div id="rolesLocked" class="lock-note">
+    Create or select a campaign above to start adding roles.
+  </div>
+
+  <div id="rolesSection" style="display:none">
+
+    <div class="card">
+      <div class="card-header">
+        <div><h3>Add a role</h3><p>Quick-add a standard BPO role, or build a custom one</p></div>
+      </div>
+      <div class="card-body">
+
+        <!-- Quick add -->
+        <div class="quick-label">Operations</div>
+        <div class="quick-row">
+          <button class="quick-btn ops" onclick="quickAdd('agent')">+ Agent</button>
+          <button class="quick-btn ops" onclick="quickAdd('sme')">+ SME</button>
+          <button class="quick-btn ops" onclick="quickAdd('tl')">+ Team Leader</button>
+        </div>
+        <div class="quick-label">Management</div>
+        <div class="quick-row">
+          <button class="quick-btn mgmt" onclick="quickAdd('om')">+ Operations Manager</button>
+          <button class="quick-btn mgmt" onclick="quickAdd('ccm')">+ Call Centre Manager</button>
+          <button class="quick-btn mgmt" onclick="quickAdd('od')">+ Operations Director</button>
+        </div>
+        <div class="quick-label">Support</div>
+        <div class="quick-row">
+          <button class="quick-btn support" onclick="quickAdd('recruiter')">+ Recruiter</button>
+          <button class="quick-btn support" onclick="quickAdd('trainer')">+ Trainer</button>
+          <button class="quick-btn support" onclick="quickAdd('hr')">+ HR</button>
+          <button class="quick-btn support" onclick="quickAdd('mis')">+ MIS</button>
+          <button class="quick-btn support" onclick="quickAdd('it')">+ IT</button>
+          <button class="quick-btn support" onclick="quickAdd('qa')">+ QA</button>
+          <button class="quick-btn custom" onclick="quickAdd('custom')">+ Custom role</button>
+        </div>
+
+        <!-- Role form -->
+        <div class="role-form" id="roleForm">
+          <div class="role-form-head">
+            <h4 id="roleFormTitle">New role</h4>
+            <button class="role-form-close" onclick="closeRoleForm()">✕</button>
+          </div>
+
+          <div class="form-grid three" style="margin-bottom:1rem">
+            <div class="field">
+              <label>Role title *</label>
+              <input type="text" id="rTitle" placeholder="e.g. Customer Service Agent" oninput="autoRoleCode()">
+            </div>
+            <div class="field">
+              <label>Category *</label>
+              <select id="rCategory">
+                <option>Operations</option><option>Management</option><option>Support</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Seniority rank</label>
+              <input type="number" id="rRank" value="1" min="1" max="10">
+              <span class="field-hint">For org-chart order (Agent=1 … Director=6)</span>
+            </div>
+          </div>
+
+          <div class="form-grid three" style="margin-bottom:1rem">
+            <div class="field">
+              <label>Support function</label>
+              <input type="text" id="rFunction" placeholder="e.g. Recruiter / Trainer / IT">
+              <span class="field-hint">Support roles only</span>
+            </div>
+            <div class="field">
+              <label>Headcount</label>
+              <input type="number" id="rHeadcount" placeholder="e.g. 20" min="1">
+            </div>
+            <div class="field">
+              <label>Target start date</label>
+              <input type="date" id="rStartDate">
+            </div>
+          </div>
+
+          <div class="form-grid three" style="margin-bottom:1rem">
+            <div class="field">
+              <label>Salary min (ZAR)</label>
+              <input type="number" id="rSalaryMin" placeholder="e.g. 8000" min="0">
+            </div>
+            <div class="field">
+              <label>Salary max (ZAR)</label>
+              <input type="number" id="rSalaryMax" placeholder="e.g. 9500" min="0">
+            </div>
+            <div class="field">
+              <label>Assessment pass score (%)</label>
+              <input type="number" id="rPassScore" placeholder="e.g. 65" min="0" max="100">
+            </div>
+          </div>
+
+          <div class="form-grid" style="margin-bottom:1rem">
+            <div class="field">
+              <label>Reports to (name)</label>
+              <input type="text" id="rReportsTo" placeholder="e.g. Tanya Phillips">
+            </div>
+            <div class="field">
+              <label>Reports to (email)</label>
+              <input type="email" id="rReportsToEmail" placeholder="e.g. tanyap@trilogybpo.com">
+            </div>
+          </div>
+
+          <div class="field form-full" style="margin-bottom:1rem">
+            <label>Role description</label>
+            <textarea id="rDescription" placeholder="Short summary of the role for the job advert"></textarea>
+          </div>
+          <div class="form-grid" style="margin-bottom:1rem">
+            <div class="field">
+              <label>Key responsibilities</label>
+              <textarea id="rResponsibilities" placeholder="One per line"></textarea>
+            </div>
+            <div class="field">
+              <label>Requirements</label>
+              <textarea id="rRequirements" placeholder="One per line"></textarea>
+            </div>
+          </div>
+
+          <!-- URL preview -->
+          <div class="slug-preview" id="rSlugPreview" style="display:none">
+            <span class="slug-url" id="rSlugUrl"></span>
+            <button class="slug-copy" onclick="copyRoleSlug()">Copy link</button>
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="closeRoleForm()">Cancel</button>
+            <button class="btn btn-primary" id="rSaveBtn" onclick="saveRole()">Add role</button>
+          </div>
+          <div class="save-result" id="rSaveResult"></div>
+        </div>
+
       </div>
     </div>
+
+    <!-- Roles list -->
+    <div class="section-head">
+      <h2>Roles in this campaign</h2>
+      <div class="section-line"></div>
+      <div class="section-tag" id="roleCount">—</div>
+    </div>
+    <div class="roles-wrap" id="rolesList">
+      <div class="roles-empty">No roles added yet. Use the quick-add buttons above.</div>
+    </div>
+
   </div>
 
 </div>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <div class="footer">
   <div class="footer-inner">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 60" height="20" class="footer-logo">
-      <rect x="0"  y="0" width="14" height="60" rx="7" fill="#A2E000"/>
-      <rect x="19" y="0" width="14" height="60" rx="7" fill="#4AFD0E"/>
-      <rect x="38" y="0" width="14" height="60" rx="7" fill="#1AAA00"/>
-    </svg>
+    <img src="trilogy-logo.png" alt="Trilogy BPO" style="height:20px;opacity:.85">
     <div class="footer-note">Trilogy CX (Pty) Ltd · Confidential · Internal use only</div>
   </div>
 </div>
 
-<!-- ── TOAST ── -->
 <div class="toast" id="toast"></div>
 
-<!-- ── QR LIBRARY ── -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <script>
 // ══════════════════════════════════════════════════════════
-//  CONFIG — swap these URLs for your real Power Automate
-//  HTTP trigger URLs before deploying
+//  CONFIG — paste real Power Automate flow URLs here
 // ══════════════════════════════════════════════════════════
 var FLOW = {
-  createCampaign:  'https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/5b8b5a271f944e0886a44923e439e47a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=x8thLcOgvWWSip6L833Z-ptTwZftD_q7QXWdyLafgM0',
-  getCampaigns:    'PASTE_GET_CAMPAIGNS_FLOW_URL_HERE',
-  toggleCampaign:  'PASTE_TOGGLE_CAMPAIGN_FLOW_URL_HERE'
+  createCampaign: 'PASTE_CREATE_CAMPAIGN2_FLOW_URL_HERE',
+  getCampaigns:   'PASTE_GET_CAMPAIGNS_FLOW_URL_HERE',
+  createRole:     'PASTE_CREATE_ROLE_FLOW_URL_HERE',
+  getRoles:       'PASTE_GET_ROLES_FLOW_URL_HERE'
 };
-
 var BASE_URL = 'https://recruit.trilogybpo.com/apply/';
 
-// ── AUTH ──────────────────────────────────────────────────
-var AUTH_KEY = 'recruit_auth';
-var AUTH_TOK = 'trilogy_recruit_2026';
+// Standard BPO roles
+var STD_ROLES = {
+  agent:    {title:'Customer Service Agent', cat:'Operations', rank:1},
+  sme:      {title:'Subject Matter Expert',  cat:'Operations', rank:2},
+  tl:       {title:'Team Leader',            cat:'Operations', rank:3},
+  om:       {title:'Operations Manager',     cat:'Management', rank:4},
+  ccm:      {title:'Call Centre Manager',    cat:'Management', rank:5},
+  od:       {title:'Operations Director',    cat:'Management', rank:6},
+  recruiter:{title:'Recruiter',  cat:'Support', rank:3, fn:'Recruiter'},
+  trainer:  {title:'Trainer',    cat:'Support', rank:3, fn:'Trainer'},
+  hr:       {title:'HR Officer', cat:'Support', rank:3, fn:'HR'},
+  mis:      {title:'MIS Analyst',cat:'Support', rank:3, fn:'MIS'},
+  it:       {title:'IT Support', cat:'Support', rank:3, fn:'IT'},
+  qa:       {title:'Quality Assessor', cat:'Support', rank:3, fn:'QA'},
+  custom:   {title:'', cat:'Operations', rank:1}
+};
 
-function doLogin() {
-  var u = document.getElementById('usr').value.trim();
-  var p = document.getElementById('pwd').value;
-  if (u === 'hradmin' && p === 'YouAreNotWelcome') {
-    sessionStorage.setItem(AUTH_KEY, AUTH_TOK);
-    var gate = document.getElementById('login-gate');
-    gate.style.opacity = '0'; gate.style.transition = 'opacity .3s';
-    setTimeout(function(){ gate.style.display = 'none'; }, 300);
+// State
+var currentCampaign = null;   // {CampaignID, CampaignCode, Title, LOB, Client}
+var campaignList = [];
+
+// ── AUTH ──
+var AUTH_KEY='recruit_auth', AUTH_TOK='trilogy_recruit_2026';
+function doLogin(){
+  var u=document.getElementById('usr').value.trim(), p=document.getElementById('pwd').value;
+  if(u==='hradmin'&&p==='YouAreNotWelcome'){
+    sessionStorage.setItem(AUTH_KEY,AUTH_TOK);
+    var g=document.getElementById('login-gate'); g.style.opacity='0'; g.style.transition='opacity .3s';
+    setTimeout(function(){g.style.display='none';},300);
     loadCampaigns();
   } else {
-    document.getElementById('login-err').style.display = 'block';
-    document.getElementById('pwd').value = '';
-    document.getElementById('pwd').focus();
+    document.getElementById('login-err').style.display='block';
+    document.getElementById('pwd').value=''; document.getElementById('pwd').focus();
   }
 }
+(function(){ if(sessionStorage.getItem(AUTH_KEY)===AUTH_TOK){ document.getElementById('login-gate').style.display='none'; loadCampaigns(); } })();
 
-(function(){
-  if (sessionStorage.getItem(AUTH_KEY) === AUTH_TOK) {
-    document.getElementById('login-gate').style.display = 'none';
-    loadCampaigns();
-  }
-})();
-
-// ── SLUG GENERATION ───────────────────────────────────────
-document.getElementById('fTitle').addEventListener('input', function() {
-  var title = this.value.trim();
-  var lob = document.getElementById('fLOB').value;
-  if (!title) return;
-  // Auto-generate campaign code from title
-  var slug = title.toLowerCase()
-    .replace(/[^a-z0-9\s]/g,'')
-    .trim().replace(/\s+/g,'-')
-    .substring(0,30);
-  var year = new Date().getFullYear();
-  var lobCode = lob ? lob.replace(/[^A-Za-z]/g,'').substring(0,3).toUpperCase() : 'TBP';
-  document.getElementById('fCode').value = 'TBP-' + lobCode + '-' + year + '-' + slug.substring(0,8).toUpperCase();
-  updateSlug();
-});
-
-function updateSlug() {
-  var code = document.getElementById('fCode').value.trim();
-  if (!code) { document.getElementById('slugPreview').style.display = 'none'; document.getElementById('qrWrap').style.display = 'none'; return; }
-  var slug = code.toLowerCase().replace(/[^a-z0-9-]/g,'-');
-  var url = BASE_URL + slug;
-  document.getElementById('slugUrl').textContent = url;
-  document.getElementById('slugPreview').style.display = 'flex';
-  generateQR(url);
-  document.getElementById('qrWrap').style.display = 'flex';
+// ── ROBUST RESPONSE PARSER ──
+function parseFlow(txt){
+  var data;
+  try { data = txt ? JSON.parse(txt) : {}; }
+  catch(e){ console.error('Raw response that failed to parse:', txt); throw new Error('Server returned an unexpected response — check console'); }
+  var rs = data.ResultSets || data;
+  var table = rs.Table1 || (Array.isArray(rs) ? rs : null);
+  return { rows: table || (Array.isArray(data) ? data : [data]), raw: data };
 }
 
-// ── QR CODE ───────────────────────────────────────────────
-var qrInstance = null;
-function generateQR(url) {
-  var canvas = document.getElementById('qrCanvas');
-  canvas.innerHTML = '';
-  try {
-    if (qrInstance) { qrInstance.clear(); qrInstance.makeCode(url); }
-    else {
-      qrInstance = new QRCode(canvas, {
-        text: url, width: 78, height: 78,
-        colorDark: '#1e1e1e', colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.M
-      });
-    }
-  } catch(e) { console.warn('QR generation failed', e); }
+// ── CAMPAIGN SWITCHER ──
+function toggleNewCampaign(){
+  var f=document.getElementById('newCampForm'), t=document.getElementById('newCampToggle');
+  if(f.style.display==='none'){ f.style.display='block'; t.classList.add('active'); t.textContent='Cancel'; document.getElementById('campSelect').value=''; }
+  else { cancelNewCampaign(); }
+}
+function cancelNewCampaign(){
+  document.getElementById('newCampForm').style.display='none';
+  var t=document.getElementById('newCampToggle'); t.classList.remove('active'); t.textContent='+ New campaign';
+  ['cTitle','cCode','cClient','cDept'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('cLOB').value=''; document.getElementById('cSaveResult').textContent='';
+}
+function autoCampCode(){
+  var title=document.getElementById('cTitle').value.trim();
+  if(!title) return;
+  var lob=document.getElementById('cLOB').value;
+  var lobCode=lob?lob.replace(/[^A-Za-z]/g,'').substring(0,3).toUpperCase():'TBP';
+  var key=title.toLowerCase().replace(/[^a-z0-9\s]/g,'').trim().replace(/\s+/g,'').substring(0,6).toUpperCase();
+  document.getElementById('cCode').value='TBP-'+lobCode+'-'+new Date().getFullYear()+'-'+key;
 }
 
-function downloadQR() {
-  var canvas = document.querySelector('#qrCanvas canvas');
-  if (!canvas) { showToast('QR not ready yet','error'); return; }
-  var code = document.getElementById('fCode').value.trim() || 'qr-code';
-  var a = document.createElement('a');
-  a.href = canvas.toDataURL('image/png');
-  a.download = code + '-qr.png';
-  a.click();
+function onCampaignSelect(){
+  var id=document.getElementById('campSelect').value;
+  if(!id){ return; }
+  cancelNewCampaign();
+  var c=campaignList.filter(function(x){return String(x.CampaignID)===String(id);})[0];
+  if(c){ setActiveCampaign(c); }
 }
 
-function copySlug() {
-  var url = document.getElementById('slugUrl').textContent;
-  navigator.clipboard.writeText(url).then(function(){
-    showToast('Application link copied to clipboard');
-  });
-}
+// ── SAVE CAMPAIGN ──
+function saveCampaign(){
+  var title=document.getElementById('cTitle').value.trim();
+  var code=document.getElementById('cCode').value.trim();
+  var lob=document.getElementById('cLOB').value;
+  if(!title||!code||!lob){ showToast('Title, code and LOB are required','error'); return; }
 
-// ── SAVE CAMPAIGN ─────────────────────────────────────────
-function saveCampaign() {
-  var title    = document.getElementById('fTitle').value.trim();
-  var code     = document.getElementById('fCode').value.trim();
-  var lob      = document.getElementById('fLOB').value;
-  var jobTitle = document.getElementById('fJobTitle').value.trim();
+  var payload={ CampaignCode:code, Title:title, Client:document.getElementById('cClient').value.trim(), LOB:lob, Department:document.getElementById('cDept').value.trim(), CreatedBy:'recruiter' };
+  var btn=document.getElementById('cSaveBtn'), res=document.getElementById('cSaveResult');
+  btn.disabled=true; btn.textContent='Creating…'; res.textContent='';
 
-  if (!title || !code || !lob || !jobTitle) {
-    showToast('Please fill in all required fields (title, code, LOB, job title)', 'error');
-    return;
-  }
-
-  var slug = code.toLowerCase().replace(/[^a-z0-9-]/g,'-');
-  var payload = {
-    action:           'create_campaign',
-    CampaignCode:     code,
-    Title:            title,
-    LOB:              lob,
-    JobTitle:         jobTitle,
-    Department:       document.getElementById('fDept').value.trim() || null,
-    ReportsTo:        document.getElementById('fReportsTo').value.trim() || null,
-    ReportsToEmail:   document.getElementById('fReportsToEmail').value.trim() || null,
-    OfferedSalary:    parseFloat(document.getElementById('fSalary').value) || null,
-    StartDate:        document.getElementById('fStartDate').value || null,
-    TargetHeadcount:  parseInt(document.getElementById('fHeadcount').value) || null,
-    URLSlug:          slug,
-    AssessmentPassScore: parseFloat(document.getElementById('fPassScore').value) || null,
-    PivotalBatteryID: document.getElementById('fBatteryID').value.trim() || null,
-    CreatedBy:        'recruiter'
-  };
-
-  var btn = document.getElementById('saveBtn');
-  var res = document.getElementById('saveResult');
-  btn.disabled = true; btn.textContent = 'Creating…'; res.textContent = '';
-
-  // ── STUB: if no flow URL configured, simulate success so you can test the UI ──
-  if (FLOW.createCampaign.indexOf('PASTE') !== -1) {
+  if(FLOW.createCampaign.indexOf('PASTE')!==-1){
     setTimeout(function(){
-      btn.disabled = false; btn.textContent = 'Create campaign';
-      showToast('Campaign created (stub mode — wire up flow URL to persist to SQL)');
-      res.innerHTML = '<span class="save-ok">✓ Campaign created in stub mode</span>';
-      appendCampaignRow(payload, 0);
-      updateStats();
-      resetForm();
-    }, 600);
-    return;
+      var fakeId=Date.now();
+      btn.disabled=false; btn.textContent='Create campaign';
+      var c={CampaignID:fakeId,CampaignCode:code,Title:title,Client:payload.Client,LOB:lob};
+      campaignList.push(c); addCampaignOption(c);
+      showToast('Campaign created (stub mode)'); setActiveCampaign(c);
+    },500); return;
   }
 
-  fetch(FLOW.createCampaign, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(payload)
+  fetch(FLOW.createCampaign,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+  .then(function(r){return r.text();})
+  .then(function(txt){
+    var row=parseFlow(txt).rows[0]||{};
+    if(row.CampaignID){
+      var c={CampaignID:row.CampaignID,CampaignCode:code,Title:title,Client:payload.Client,LOB:lob};
+      campaignList.push(c); addCampaignOption(c);
+      showToast('Campaign created — '+code); setActiveCampaign(c);
+    } else { throw new Error(row.Message||'Campaign not created'); }
+    btn.disabled=false; btn.textContent='Create campaign';
   })
-  .then(function(r){ return r.json(); })
-  .then(function(d){
-    // Unwrap: body -> ResultSets -> Table1 -> first row (matches HR portal pattern)
-    var body = d.body ? (typeof d.body==='string' ? JSON.parse(d.body) : d.body) : d;
-    var rows = (body.ResultSets && body.ResultSets.Table1) ? body.ResultSets.Table1 : (Array.isArray(body) ? body : [body]);
-    var row = rows[0] || {};
-    if (row.Result === 'Success' && row.CampaignID) {
-      showToast('Campaign created — ' + code);
-      res.innerHTML = '<span class="save-ok">✓ Campaign created. Application URL is live.</span>';
-      appendCampaignRow(payload, row.CampaignID);
-      updateStats();
-      resetForm();
-    } else {
-      throw new Error(row.Message || 'Unknown error');
-    }
-    btn.disabled = false; btn.textContent = 'Create campaign';
-  })
-  .catch(function(err){
-    res.innerHTML = '<span class="save-err">✗ ' + err.message + '</span>';
-    showToast('Failed to create campaign', 'error');
-    btn.disabled = false; btn.textContent = 'Create campaign';
-  });
+  .catch(function(err){ res.innerHTML='<span class="save-err">✗ '+err.message+'</span>'; showToast('Failed to create campaign','error'); btn.disabled=false; btn.textContent='Create campaign'; });
 }
 
-// ── LOAD CAMPAIGNS ────────────────────────────────────────
-function loadCampaigns() {
-  // Stub mode if flow URL not configured
-  if (FLOW.getCampaigns.indexOf('PASTE') !== -1) {
-    renderCampaigns([]);
-    updateStats();
-    return;
+// ── LOAD CAMPAIGNS ──
+function loadCampaigns(){
+  if(FLOW.getCampaigns.indexOf('PASTE')!==-1){ campaignList=[]; return; }
+  fetch(FLOW.getCampaigns,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'get_campaigns'})})
+  .then(function(r){return r.text();})
+  .then(function(txt){
+    campaignList=parseFlow(txt).rows||[];
+    var sel=document.getElementById('campSelect');
+    campaignList.forEach(function(c){ addCampaignOption(c); });
+  }).catch(function(){ campaignList=[]; });
+}
+function addCampaignOption(c){
+  var sel=document.getElementById('campSelect');
+  var o=document.createElement('option'); o.value=c.CampaignID; o.textContent=(c.Title||'')+' ('+(c.CampaignCode||'')+')';
+  sel.appendChild(o);
+}
+
+// ── ACTIVE CAMPAIGN ──
+function setActiveCampaign(c){
+  currentCampaign=c;
+  document.getElementById('newCampForm').style.display='none';
+  document.getElementById('newCampToggle').classList.remove('active');
+  document.getElementById('newCampToggle').textContent='+ New campaign';
+  document.getElementById('campSelect').value=c.CampaignID;
+  document.getElementById('acTitle').textContent=c.Title||'';
+  document.getElementById('acMeta').textContent=(c.CampaignCode||'')+(c.Client?' · '+c.Client:'')+' · '+(c.LOB||'');
+  document.getElementById('activeCampBanner').style.display='flex';
+  document.getElementById('rolesLocked').style.display='none';
+  document.getElementById('rolesSection').style.display='block';
+  document.getElementById('rolesTag').textContent='Adding roles to '+(c.CampaignCode||'');
+  loadRoles();
+}
+function changeCampaign(){
+  currentCampaign=null;
+  document.getElementById('activeCampBanner').style.display='none';
+  document.getElementById('rolesSection').style.display='none';
+  document.getElementById('rolesLocked').style.display='block';
+  document.getElementById('rolesTag').textContent='Select a campaign first';
+  document.getElementById('campSelect').value='';
+  closeRoleForm();
+}
+
+// ── QUICK ADD ROLE ──
+function quickAdd(key){
+  var r=STD_ROLES[key]; if(!r) return;
+  openRoleForm();
+  document.getElementById('roleFormTitle').textContent = key==='custom' ? 'New custom role' : 'New role — '+r.title;
+  document.getElementById('rTitle').value=r.title||'';
+  document.getElementById('rCategory').value=r.cat;
+  document.getElementById('rRank').value=r.rank;
+  document.getElementById('rFunction').value=r.fn||'';
+  ['rHeadcount','rStartDate','rSalaryMin','rSalaryMax','rPassScore','rReportsTo','rReportsToEmail','rDescription','rResponsibilities','rRequirements'].forEach(function(id){document.getElementById(id).value='';});
+  autoRoleCode();
+  document.getElementById('rTitle').focus();
+}
+function openRoleForm(){ document.getElementById('roleForm').classList.add('show'); document.getElementById('rSaveResult').textContent=''; }
+function closeRoleForm(){ document.getElementById('roleForm').classList.remove('show'); }
+
+var currentRoleCode='', currentRoleSlug='';
+function autoRoleCode(){
+  if(!currentCampaign) return;
+  var title=document.getElementById('rTitle').value.trim();
+  if(!title){ document.getElementById('rSlugPreview').style.display='none'; return; }
+  var roleKey=title.toLowerCase().replace(/[^a-z0-9\s]/g,'').trim().replace(/\s+/g,'-').substring(0,20);
+  currentRoleCode=currentCampaign.CampaignCode+'-'+roleKey.toUpperCase();
+  currentRoleSlug=(currentCampaign.CampaignCode+'-'+roleKey).toLowerCase().replace(/[^a-z0-9-]/g,'-');
+  document.getElementById('rSlugUrl').textContent=BASE_URL+currentRoleSlug;
+  document.getElementById('rSlugPreview').style.display='flex';
+}
+function copyRoleSlug(){ navigator.clipboard.writeText(BASE_URL+currentRoleSlug).then(function(){showToast('Application link copied');}); }
+
+// ── SAVE ROLE ──
+function saveRole(){
+  if(!currentCampaign){ showToast('No campaign selected','error'); return; }
+  var title=document.getElementById('rTitle').value.trim();
+  if(!title){ showToast('Role title is required','error'); return; }
+  autoRoleCode();
+
+  var payload={
+    CampaignID:currentCampaign.CampaignID,
+    RoleCode:currentRoleCode,
+    RoleTitle:title,
+    RoleCategory:document.getElementById('rCategory').value,
+    SeniorityRank:parseInt(document.getElementById('rRank').value)||1,
+    RoleFunction:document.getElementById('rFunction').value.trim(),
+    Headcount:parseInt(document.getElementById('rHeadcount').value)||null,
+    SalaryMin:parseFloat(document.getElementById('rSalaryMin').value)||null,
+    SalaryMax:parseFloat(document.getElementById('rSalaryMax').value)||null,
+    StartDate:document.getElementById('rStartDate').value||null,
+    URLSlug:currentRoleSlug,
+    AssessmentPassScore:parseFloat(document.getElementById('rPassScore').value)||null,
+    ReportsToName:document.getElementById('rReportsTo').value.trim(),
+    ReportsToEmail:document.getElementById('rReportsToEmail').value.trim(),
+    RoleDescription:document.getElementById('rDescription').value.trim(),
+    KeyResponsibilities:document.getElementById('rResponsibilities').value.trim(),
+    Requirements:document.getElementById('rRequirements').value.trim(),
+    CreatedBy:'recruiter'
+  };
+  var btn=document.getElementById('rSaveBtn'), res=document.getElementById('rSaveResult');
+  btn.disabled=true; btn.textContent='Adding…'; res.textContent='';
+
+  if(FLOW.createRole.indexOf('PASTE')!==-1){
+    setTimeout(function(){
+      btn.disabled=false; btn.textContent='Add role';
+      payload.RoleID=Date.now(); payload.TotalApplications=0;
+      appendRole(payload); showToast('Role added (stub mode)'); closeRoleForm();
+    },500); return;
   }
 
-  fetch(FLOW.getCampaigns, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({action:'get_campaigns'})
+  fetch(FLOW.createRole,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+  .then(function(r){return r.text();})
+  .then(function(txt){
+    var row=parseFlow(txt).rows[0]||{};
+    if(row.RoleID){
+      payload.RoleID=row.RoleID; payload.TotalApplications=0;
+      appendRole(payload); showToast('Role added — '+title); closeRoleForm();
+    } else { throw new Error(row.Message||'Role not created'); }
+    btn.disabled=false; btn.textContent='Add role';
   })
-  .then(function(r){ return r.json(); })
-  .then(function(d){
-    var body = d.body ? (typeof d.body==='string' ? JSON.parse(d.body) : d.body) : d;
-    var rows = (body.ResultSets && body.ResultSets.Table1) ? body.ResultSets.Table1 : (Array.isArray(body) ? body : []);
-    renderCampaigns(rows);
-    updateStats(rows);
-  })
-  .catch(function(){ renderCampaigns([]); });
+  .catch(function(err){ res.innerHTML='<span class="save-err">✗ '+err.message+'</span>'; showToast('Failed to add role','error'); btn.disabled=false; btn.textContent='Add role'; });
 }
 
-function renderCampaigns(rows) {
-  var tbody = document.getElementById('campTableBody');
-  var tag   = document.getElementById('campCount');
-  if (!rows.length) {
-    tbody.innerHTML = '<tr class="empty-row"><td colspan="8">No campaigns yet — create one above to get started.</td></tr>';
-    tag.textContent = '0 campaigns';
-    return;
-  }
-  tag.textContent = rows.length + ' campaign' + (rows.length===1?'':'s');
-  tbody.innerHTML = rows.map(function(r){
-    var active = r.IsActive !== 0 && r.IsActive !== false;
-    var slug   = (r.URLSlug||'').toLowerCase();
-    var appUrl = BASE_URL + slug;
-    return '<tr class="' + (active?'':'inactive') + '">' +
-      '<td><a href="#" class="tbl-link">' + esc(r.Title||'') + '</a>' +
-        '<div style="font-size:11px;color:var(--text3);margin-top:2px">' + esc(r.CampaignCode||'') + '</div></td>' +
-      '<td><span class="lob-badge">' + esc(r.LOB||'') + '</span></td>' +
-      '<td>' + esc(r.JobTitle||'') + '</td>' +
-      '<td style="text-align:center">' + (r.TargetHeadcount||'—') + '</td>' +
-      '<td>' + (r.StartDate ? formatDate(r.StartDate) : '—') + '</td>' +
-      '<td><span class="' + (active?'active-dot':'inactive-dot') + '"></span>' + (active?'Active':'Paused') + '</td>' +
-      '<td style="text-align:center">' + (r.TotalApplications||0) + '</td>' +
-      '<td><div class="tbl-actions">' +
-        '<button class="btn-sm btn-sm-navy" onclick="copyLink(\'' + appUrl + '\')">Copy link</button>' +
-        '<button class="btn-sm btn-sm-ghost" onclick="toggleCampaign(' + r.CampaignID + ',' + (active?'false':'true') + ',this)">' + (active?'Pause':'Activate') + '</button>' +
-      '</div></td>' +
-    '</tr>';
-  }).join('');
+// ── LOAD ROLES ──
+function loadRoles(){
+  var list=document.getElementById('rolesList');
+  if(FLOW.getRoles.indexOf('PASTE')!==-1){ list.innerHTML='<div class="roles-empty">No roles added yet. Use the quick-add buttons above.</div>'; document.getElementById('roleCount').textContent='0 roles'; return; }
+  list.innerHTML='<div class="roles-empty">Loading roles…</div>';
+  fetch(FLOW.getRoles,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({CampaignID:currentCampaign.CampaignID})})
+  .then(function(r){return r.text();})
+  .then(function(txt){
+    var rows=parseFlow(txt).rows||[];
+    renderRoles(rows);
+  }).catch(function(){ list.innerHTML='<div class="roles-empty">Could not load roles.</div>'; });
 }
 
-function appendCampaignRow(p, id) {
-  var tbody = document.getElementById('campTableBody');
-  var empty = tbody.querySelector('.empty-row');
-  if (empty) empty.remove();
-  var slug = (p.URLSlug||'').toLowerCase();
-  var appUrl = BASE_URL + slug;
-  var tr = document.createElement('tr');
-  tr.innerHTML =
-    '<td><a href="#" class="tbl-link">' + esc(p.Title) + '</a>' +
-      '<div style="font-size:11px;color:var(--text3);margin-top:2px">' + esc(p.CampaignCode) + '</div></td>' +
-    '<td><span class="lob-badge">' + esc(p.LOB) + '</span></td>' +
-    '<td>' + esc(p.JobTitle) + '</td>' +
-    '<td style="text-align:center">' + (p.TargetHeadcount||'—') + '</td>' +
-    '<td>' + (p.StartDate ? formatDate(p.StartDate) : '—') + '</td>' +
-    '<td><span class="active-dot"></span>Active</td>' +
-    '<td style="text-align:center">0</td>' +
-    '<td><div class="tbl-actions">' +
-      '<button class="btn-sm btn-sm-navy" onclick="copyLink(\'' + appUrl + '\')">Copy link</button>' +
-      '<button class="btn-sm btn-sm-ghost" onclick="toggleCampaign(' + id + ',false,this)">Pause</button>' +
-    '</div></td>';
-  tbody.insertBefore(tr, tbody.firstChild);
+function renderRoles(rows){
+  var list=document.getElementById('rolesList');
+  if(!rows.length){ list.innerHTML='<div class="roles-empty">No roles added yet. Use the quick-add buttons above.</div>'; document.getElementById('roleCount').textContent='0 roles'; return; }
+  rows.sort(function(a,b){return (a.SeniorityRank||0)-(b.SeniorityRank||0);});
+  document.getElementById('roleCount').textContent=rows.length+' role'+(rows.length===1?'':'s');
+  list.innerHTML=rows.map(roleCardHTML).join('');
+}
+function appendRole(p){
+  var list=document.getElementById('rolesList');
+  var empty=list.querySelector('.roles-empty'); if(empty) list.innerHTML='';
+  list.insertAdjacentHTML('beforeend', roleCardHTML(p));
+  var n=list.querySelectorAll('.role-card').length;
+  document.getElementById('roleCount').textContent=n+' role'+(n===1?'':'s');
+}
+function roleCardHTML(r){
+  var cat=(r.RoleCategory||'Operations');
+  var catCls=cat==='Management'?'mgmt':cat==='Support'?'support':'ops';
+  var slug=(r.URLSlug||'').toLowerCase();
+  var sal=(r.SalaryMin||r.SalaryMax)?('R'+(r.SalaryMin||'?')+(r.SalaryMax&&r.SalaryMax!==r.SalaryMin?'–R'+r.SalaryMax:'')):'—';
+  return '<div class="role-card">'+
+    '<div class="role-rank rank-'+catCls+'">'+(r.SeniorityRank||1)+'</div>'+
+    '<div class="role-info">'+
+      '<div class="role-title">'+esc(r.RoleTitle||'')+'</div>'+
+      '<div class="role-meta"><span class="role-cat-pill cat-'+catCls+'">'+esc(cat)+'</span> · '+(r.Headcount?r.Headcount+' needed':'no target')+' · '+sal+(r.RoleFunction?' · '+esc(r.RoleFunction):'')+'</div>'+
+    '</div>'+
+    '<div class="role-actions">'+
+      '<button class="btn-sm btn-sm-navy" onclick="copyLink(\''+BASE_URL+slug+'\')">Copy link</button>'+
+      '<button class="btn-sm btn-sm-green" onclick="showToast(\'Advert generator coming next\')">Advert</button>'+
+    '</div>'+
+    '<div class="role-apps"><div class="role-apps-num">'+(r.TotalApplications||0)+'</div><div class="role-apps-lbl">applied</div></div>'+
+  '</div>';
 }
 
-// ── TOGGLE ACTIVE ─────────────────────────────────────────
-function toggleCampaign(id, newActive, btn) {
-  if (FLOW.toggleCampaign.indexOf('PASTE') !== -1) {
-    var row = btn.closest('tr');
-    row.classList.toggle('inactive');
-    btn.textContent = newActive ? 'Pause' : 'Activate';
-    btn.onclick = function(){ toggleCampaign(id, !newActive, btn); };
-    var dot = row.querySelector('.active-dot, .inactive-dot');
-    dot.className = newActive ? 'active-dot' : 'inactive-dot';
-    row.querySelectorAll('td')[5].innerHTML = '<span class="' + (newActive?'active-dot':'inactive-dot') + '"></span>' + (newActive?'Active':'Paused');
-    showToast('Campaign ' + (newActive ? 'activated' : 'paused') + ' (stub mode)');
-    return;
-  }
-  fetch(FLOW.toggleCampaign, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({action:'toggle_campaign', CampaignID: id, IsActive: newActive})
-  }).then(function(){ loadCampaigns(); })
-    .catch(function(){ showToast('Failed to update campaign', 'error'); });
-}
-
-// ── STATS ─────────────────────────────────────────────────
-function updateStats(rows) {
-  rows = rows || [];
-  var active = rows.filter(function(r){ return r.IsActive !== 0 && r.IsActive !== false; }).length;
-  var apps   = rows.reduce(function(s,r){ return s + (parseInt(r.TotalApplications)||0); }, 0);
-  document.getElementById('statTotal').textContent = rows.length;
-  document.getElementById('statActive').textContent = active;
-  document.getElementById('statApplications').textContent = apps;
-}
-
-// ── HELPERS ───────────────────────────────────────────────
-function resetForm() {
-  ['fTitle','fCode','fJobTitle','fDept','fHeadcount','fSalary','fStartDate',
-   'fReportsTo','fReportsToEmail','fPassScore','fBatteryID'].forEach(function(id){
-    document.getElementById(id).value = '';
-  });
-  document.getElementById('fLOB').value = '';
-  document.getElementById('slugPreview').style.display = 'none';
-  document.getElementById('qrWrap').style.display = 'none';
-  document.getElementById('saveResult').textContent = '';
-  qrInstance = null;
-}
-
-function copyLink(url) {
-  navigator.clipboard.writeText(url).then(function(){
-    showToast('Application link copied');
-  });
-}
-
-function formatDate(d) {
-  if (!d) return '—';
-  try { return new Date(d).toLocaleDateString('en-ZA',{day:'2-digit',month:'short',year:'numeric'}); }
-  catch(e){ return d; }
-}
-
-function esc(s) {
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-function showToast(msg, type) {
-  var t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast' + (type==='error'?' error':'');
-  void t.offsetWidth;
-  t.classList.add('show');
-  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+// ── HELPERS ──
+function copyLink(url){ navigator.clipboard.writeText(url).then(function(){showToast('Application link copied');}); }
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function showToast(msg,type){
+  var t=document.getElementById('toast'); t.textContent=msg; t.className='toast'+(type==='error'?' error':'');
+  void t.offsetWidth; t.classList.add('show'); setTimeout(function(){t.classList.remove('show');},3500);
 }
 </script>
 </body>
