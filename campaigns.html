@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trilogy BPO — Campaign Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Wix+Madefor+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1e1e1e;--navy2:#2a2a2a;--navy-dark:#121212;
+  --green:#4AFD0E;--green-light:#edffd6;--green-dark:#2a8a00;
+  --offwhite:#F7F6F2;--slate:#4A5568;
+  --border:#e2e1dd;--border2:#c8c7c3;
+  --surface:#fff;--surface2:#f2f1ed;--bg:#e8e7e3;
+  --text:#1B2A4A;--text2:#4A5568;--text3:#7a8499;
+  --radius:8px;--radius-lg:12px;--radius-xl:16px;
+  --red:#c0392b;--amber:#f39c12;
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+
+/* ── LOGIN GATE ── */
+#login-gate{position:fixed;inset:0;background:#1e1e1e;z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem}
+.login-box{background:#2a2a2a;border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:48px 40px;width:100%;max-width:400px;text-align:center}
+.login-logo{margin-bottom:24px}
+.login-title{color:#fff;font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;margin-bottom:6px}
+.login-sub{color:rgba(255,255,255,0.35);font-size:13px;margin-bottom:32px}
+.login-label{display:block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:5px;text-align:left}
+.login-input{width:100%;padding:11px 14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#fff;font-size:14px;font-family:inherit;outline:none;margin-bottom:14px}
+.login-input:focus{border-color:rgba(74,253,14,.4)}
+.login-btn{width:100%;padding:13px;background:#4AFD0E;color:#111;border:none;border-radius:8px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;cursor:pointer}
+.login-btn:hover{background:#5fff1a}
+.login-err{margin-top:12px;background:rgba(192,57,43,.18);border:1px solid rgba(192,57,43,.35);border-radius:8px;padding:9px 14px;color:#ffa0a0;font-size:13px;display:none}
+.login-footer{margin-top:28px;color:rgba(255,255,255,.15);font-size:11px}
+
+/* ── NAV ── */
+.nav{background:var(--navy);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 24px rgba(0,0,0,.4)}
+.nav-left{display:flex;align-items:center;gap:12px}
+.nav-logo{height:30px}
+.nav-divider{width:1px;height:20px;background:rgba(255,255,255,.15);margin:0 4px}
+.nav-section{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.nav-link{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-decoration:none;letter-spacing:.04em}
+.nav-link:hover{color:#fff}
+.nav-avatar{width:32px;height:32px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--navy);font-family:'Montserrat',sans-serif}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:3rem 2rem 2.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;right:-40px;width:340px;height:340px;background:radial-gradient(circle,rgba(74,253,14,.07) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto}
+.hero-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.75rem;opacity:.8}
+.hero-title{font-family:'Montserrat',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1.15;margin-bottom:.75rem;letter-spacing:-.02em}
+.hero-title span{color:var(--green)}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.5);max-width:500px;line-height:1.7}
+.hero-stats{display:flex;gap:2.5rem;margin-top:2rem;flex-wrap:wrap}
+.stat{border-left:2px solid var(--green);padding-left:1rem}
+.stat-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:800;color:#fff;line-height:1}
+.stat-label{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px}
+
+/* ── SHELL ── */
+.shell{max-width:1100px;margin:0 auto;padding:2.5rem 2rem 5rem}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
+.section-head h2{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--text);white-space:nowrap}
+.section-line{flex:1;height:1px;background:var(--border)}
+.section-tag{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);font-family:'Montserrat',sans-serif;white-space:nowrap}
+
+/* ── CREATE CAMPAIGN CARD ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;margin-bottom:2.5rem}
+.card-header{background:var(--navy);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+.card-header h3{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#fff}
+.card-header p{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+.card-body{padding:1.5rem}
+
+/* ── FORM GRID ── */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-grid.three{grid-template-columns:1fr 1fr 1fr}
+.form-full{grid-column:1/-1}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--text2)}
+.field input,.field select,.field textarea{padding:10px 14px;border:1px solid var(--border2);border-radius:var(--radius);font-size:13px;font-family:inherit;color:var(--text);background:var(--offwhite);transition:border .15s,background .15s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--navy);background:#fff}
+.field textarea{resize:vertical;min-height:80px}
+.field-hint{font-size:11px;color:var(--text3);margin-top:2px}
+
+/* ── SLUG PREVIEW ── */
+.slug-preview{background:var(--navy);border-radius:var(--radius);padding:12px 16px;margin-top:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.slug-url{font-family:'Montserrat',sans-serif;font-size:12px;color:var(--green);word-break:break-all}
+.slug-copy{background:none;border:1px solid rgba(74,253,14,.3);border-radius:6px;padding:5px 12px;color:var(--green);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap}
+.slug-copy:hover{background:rgba(74,253,14,.1)}
+
+/* ── QR PLACEHOLDER ── */
+.qr-wrap{display:flex;align-items:center;gap:1.5rem;background:var(--offwhite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;margin-top:1rem}
+.qr-box{width:80px;height:80px;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.qr-box canvas{display:block}
+.qr-info h4{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px}
+.qr-info p{font-size:11px;color:var(--text3);line-height:1.5}
+.btn-qr{margin-top:8px;padding:6px 14px;background:var(--navy);color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif}
+.btn-qr:hover{background:var(--navy2)}
+
+/* ── BUTTONS ── */
+.btn-row{display:flex;gap:10px;margin-top:1.5rem;justify-content:flex-end}
+.btn{padding:10px 24px;border:none;border-radius:var(--radius);font-size:13px;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;transition:all .15s}
+.btn-primary{background:var(--green);color:#111}
+.btn-primary:hover{background:#5fff1a;transform:translateY(-1px);box-shadow:0 4px 16px rgba(74,253,14,.3)}
+.btn-primary:disabled{opacity:.5;pointer-events:none}
+.btn-ghost{background:var(--offwhite);color:var(--text);border:1px solid var(--border2)}
+.btn-ghost:hover{background:#dddcda}
+
+/* ── SAVE RESULT ── */
+.save-result{font-size:12px;margin-top:.75rem;text-align:right;min-height:18px}
+.save-ok{color:var(--green-dark)}
+.save-err{color:var(--red)}
+
+/* ── CAMPAIGNS TABLE ── */
+.camp-table-wrap{overflow-x:auto}
+.camp-table{width:100%;border-collapse:collapse;font-size:13px}
+.camp-table th{background:var(--navy);color:#fff;padding:10px 14px;text-align:left;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}
+.camp-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:middle}
+.camp-table tr:last-child td{border-bottom:none}
+.camp-table tr:hover td{background:var(--offwhite)}
+.camp-table tr.inactive td{opacity:.5}
+.lob-badge{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;font-family:'Montserrat',sans-serif;background:var(--surface2);color:var(--text2)}
+.active-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px}
+.inactive-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--border2);margin-right:6px}
+.tbl-link{color:var(--navy);text-decoration:none;font-weight:600}
+.tbl-link:hover{color:var(--green-dark)}
+.tbl-actions{display:flex;gap:6px}
+.btn-sm{padding:4px 12px;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Montserrat',sans-serif}
+.btn-sm-navy{background:var(--navy);color:#fff}
+.btn-sm-navy:hover{background:var(--navy2)}
+.btn-sm-ghost{background:var(--surface2);color:var(--text2);border:1px solid var(--border2)}
+.btn-sm-ghost:hover{background:#dddcda}
+.btn-sm-red{background:#fdf0ef;color:var(--red);border:1px solid #f5c6c2}
+.btn-sm-red:hover{background:#f5c6c2}
+.empty-row td{text-align:center;padding:2rem;color:var(--text3);font-style:italic}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);padding:1.25rem 2rem}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{height:20px}
+.footer-note{font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--navy);color:#fff;padding:12px 20px;border-radius:var(--radius-lg);font-size:13px;box-shadow:0 8px 32px rgba(0,0,0,.3);border-left:4px solid var(--green);transform:translateY(20px);opacity:0;transition:all .25s;z-index:9998;max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.error{border-left-color:var(--red)}
+
+@media(max-width:760px){
+  .form-grid,.form-grid.three{grid-template-columns:1fr}
+  .form-full{grid-column:1}
+  .shell{padding:1.5rem 1rem 4rem}
+  .hero-title{font-size:22px}
+  .btn-row{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN GATE ── -->
+<div id="login-gate">
+  <div class="login-box">
+    <div class="login-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 60" height="36">
+        <rect x="0"  y="0" width="14" height="60" rx="7" fill="#A2E000"/>
+        <rect x="19" y="0" width="14" height="60" rx="7" fill="#4AFD0E"/>
+        <rect x="38" y="0" width="14" height="60" rx="7" fill="#1AAA00"/>
+      </svg>
+    </div>
+    <div class="login-title">Recruitment Portal</div>
+    <div class="login-sub">Trilogy CX (Pty) Ltd · Authorised staff only</div>
+    <div style="margin-bottom:14px;text-align:left">
+      <label class="login-label">Username</label>
+      <input id="usr" type="text" class="login-input" placeholder="Username" autocomplete="username"
+        onkeydown="if(event.key==='Enter')document.getElementById('pwd').focus()">
+    </div>
+    <div style="margin-bottom:22px;text-align:left">
+      <label class="login-label">Password</label>
+      <input id="pwd" type="password" class="login-input" placeholder="Password" autocomplete="current-password"
+        onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign in</button>
+    <div id="login-err" class="login-err">Incorrect username or password.</div>
+    <div class="login-footer">Trilogy CX (Pty) Ltd · Internal use only</div>
+  </div>
+</div>
+
+<!-- ── NAV ── -->
+<nav class="nav">
+  <div class="nav-left">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 60" height="28" class="nav-logo">
+      <rect x="0"  y="0" width="14" height="60" rx="7" fill="#A2E000"/>
+      <rect x="19" y="0" width="14" height="60" rx="7" fill="#4AFD0E"/>
+      <rect x="38" y="0" width="14" height="60" rx="7" fill="#1AAA00"/>
+    </svg>
+    <div class="nav-divider"></div>
+    <div class="nav-section">Recruitment Portal</div>
+    <div class="nav-divider"></div>
+    <div class="nav-section" style="color:rgba(255,255,255,.6)">Campaign Manager</div>
+  </div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link">Dashboard</a>
+    <div class="nav-divider"></div>
+    <div class="nav-avatar" id="navAvatar">R</div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Trilogy BPO · Recruitment</div>
+    <h1 class="hero-title">Campaign <span>Manager.</span></h1>
+    <p class="hero-sub">Create a campaign to generate the unique application URL and QR code for each job posting. Every candidate application flows through a campaign.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Total campaigns</div></div>
+      <div class="stat"><div class="stat-num" id="statActive">—</div><div class="stat-label">Active campaigns</div></div>
+      <div class="stat"><div class="stat-num" id="statApplications">—</div><div class="stat-label">Total applications</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="shell">
+
+  <!-- ── CREATE CAMPAIGN ── -->
+  <div class="section-head">
+    <h2>Create new campaign</h2>
+    <div class="section-line"></div>
+    <div class="section-tag">Fill all required fields</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h3>New campaign</h3>
+        <p>Each campaign generates a unique application URL — one per job posting or LOB intake</p>
+      </div>
+    </div>
+    <div class="card-body">
+
+      <div class="form-grid" style="margin-bottom:1rem">
+        <div class="field">
+          <label>Campaign title *</label>
+          <input type="text" id="fTitle" placeholder="e.g. Customer Service Agent — Q3 2026">
+        </div>
+        <div class="field">
+          <label>Campaign code *</label>
+          <input type="text" id="fCode" placeholder="e.g. TBP-CS-2026-01" oninput="updateSlug()">
+          <span class="field-hint">Auto-filled from title — edit if needed</span>
+        </div>
+      </div>
+
+      <div class="form-grid three" style="margin-bottom:1rem">
+        <div class="field">
+          <label>Line of business (LOB) *</label>
+          <select id="fLOB">
+            <option value="">— Select LOB —</option>
+            <option>Customer Service</option>
+            <option>Sales</option>
+            <option>Collections</option>
+            <option>Utilities</option>
+            <option>Technical Support</option>
+            <option>Back Office</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Job title *</label>
+          <input type="text" id="fJobTitle" placeholder="e.g. Customer Service Agent">
+        </div>
+        <div class="field">
+          <label>Department</label>
+          <input type="text" id="fDept" placeholder="e.g. Operations">
+        </div>
+      </div>
+
+      <div class="form-grid three" style="margin-bottom:1rem">
+        <div class="field">
+          <label>Target headcount</label>
+          <input type="number" id="fHeadcount" placeholder="e.g. 20" min="1">
+        </div>
+        <div class="field">
+          <label>Offered salary (ZAR)</label>
+          <input type="number" id="fSalary" placeholder="e.g. 8500" min="0">
+        </div>
+        <div class="field">
+          <label>Target start date</label>
+          <input type="date" id="fStartDate">
+        </div>
+      </div>
+
+      <div class="form-grid" style="margin-bottom:1rem">
+        <div class="field">
+          <label>Reports to (manager name)</label>
+          <input type="text" id="fReportsTo" placeholder="e.g. Tanya Phillips">
+        </div>
+        <div class="field">
+          <label>Reports to (email)</label>
+          <input type="email" id="fReportsToEmail" placeholder="e.g. tanyap@trilogybpo.com">
+        </div>
+      </div>
+
+      <div class="form-grid" style="margin-bottom:1rem">
+        <div class="field">
+          <label>Assessment pass score (%)</label>
+          <input type="number" id="fPassScore" placeholder="e.g. 65" min="0" max="100">
+          <span class="field-hint">Pivotal Talent threshold for this LOB — leave blank to shortlist manually</span>
+        </div>
+        <div class="field">
+          <label>Pivotal battery ID</label>
+          <input type="text" id="fBatteryID" placeholder="e.g. PT-CS-001">
+          <span class="field-hint">From Pivotal Talent — leave blank until credentials are confirmed</span>
+        </div>
+      </div>
+
+      <!-- URL preview -->
+      <div class="slug-preview" id="slugPreview" style="display:none">
+        <span class="slug-url" id="slugUrl"></span>
+        <button class="slug-copy" onclick="copySlug()">Copy link</button>
+      </div>
+
+      <!-- QR code -->
+      <div class="qr-wrap" id="qrWrap" style="display:none">
+        <div class="qr-box"><canvas id="qrCanvas"></canvas></div>
+        <div class="qr-info">
+          <h4>QR code — ready to download</h4>
+          <p>Print or embed this QR code in job ads. It routes directly to the application form for this campaign.</p>
+          <button class="btn-qr" onclick="downloadQR()">Download QR code</button>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-ghost" onclick="resetForm()">Clear</button>
+        <button class="btn btn-primary" id="saveBtn" onclick="saveCampaign()">Create campaign</button>
+      </div>
+      <div class="save-result" id="saveResult"></div>
+
+    </div>
+  </div>
+
+  <!-- ── CAMPAIGNS LIST ── -->
+  <div class="section-head">
+    <h2>All campaigns</h2>
+    <div class="section-line"></div>
+    <div class="section-tag" id="campCount">Loading…</div>
+  </div>
+
+  <div class="card">
+    <div class="card-body" style="padding:0">
+      <div class="camp-table-wrap">
+        <table class="camp-table">
+          <thead>
+            <tr>
+              <th>Campaign</th>
+              <th>LOB</th>
+              <th>Job title</th>
+              <th>Target</th>
+              <th>Start date</th>
+              <th>Status</th>
+              <th>Applications</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="campTableBody">
+            <tr class="empty-row"><td colspan="8">Loading campaigns…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="footer">
+  <div class="footer-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 60" height="20" class="footer-logo">
+      <rect x="0"  y="0" width="14" height="60" rx="7" fill="#A2E000"/>
+      <rect x="19" y="0" width="14" height="60" rx="7" fill="#4AFD0E"/>
+      <rect x="38" y="0" width="14" height="60" rx="7" fill="#1AAA00"/>
+    </svg>
+    <div class="footer-note">Trilogy CX (Pty) Ltd · Confidential · Internal use only</div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<!-- ── QR LIBRARY ── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+// ══════════════════════════════════════════════════════════
+//  CONFIG — swap these URLs for your real Power Automate
+//  HTTP trigger URLs before deploying
+// ══════════════════════════════════════════════════════════
+var FLOW = {
+  createCampaign:  'PASTE_CREATE_CAMPAIGN_FLOW_URL_HERE',
+  getCampaigns:    'PASTE_GET_CAMPAIGNS_FLOW_URL_HERE',
+  toggleCampaign:  'PASTE_TOGGLE_CAMPAIGN_FLOW_URL_HERE'
+};
+
+var BASE_URL = 'https://recruit.trilogybpo.com/apply/';
+
+// ── AUTH ──────────────────────────────────────────────────
+var AUTH_KEY = 'recruit_auth';
+var AUTH_TOK = 'trilogy_recruit_2026';
+
+function doLogin() {
+  var u = document.getElementById('usr').value.trim();
+  var p = document.getElementById('pwd').value;
+  if (u === 'hradmin' && p === 'YouAreNotWelcome') {
+    sessionStorage.setItem(AUTH_KEY, AUTH_TOK);
+    var gate = document.getElementById('login-gate');
+    gate.style.opacity = '0'; gate.style.transition = 'opacity .3s';
+    setTimeout(function(){ gate.style.display = 'none'; }, 300);
+    loadCampaigns();
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+    document.getElementById('pwd').value = '';
+    document.getElementById('pwd').focus();
+  }
+}
+
+(function(){
+  if (sessionStorage.getItem(AUTH_KEY) === AUTH_TOK) {
+    document.getElementById('login-gate').style.display = 'none';
+    loadCampaigns();
+  }
+})();
+
+// ── SLUG GENERATION ───────────────────────────────────────
+document.getElementById('fTitle').addEventListener('input', function() {
+  var title = this.value.trim();
+  var lob = document.getElementById('fLOB').value;
+  if (!title) return;
+  // Auto-generate campaign code from title
+  var slug = title.toLowerCase()
+    .replace(/[^a-z0-9\s]/g,'')
+    .trim().replace(/\s+/g,'-')
+    .substring(0,30);
+  var year = new Date().getFullYear();
+  var lobCode = lob ? lob.replace(/[^A-Za-z]/g,'').substring(0,3).toUpperCase() : 'TBP';
+  document.getElementById('fCode').value = 'TBP-' + lobCode + '-' + year + '-' + slug.substring(0,8).toUpperCase();
+  updateSlug();
+});
+
+function updateSlug() {
+  var code = document.getElementById('fCode').value.trim();
+  if (!code) { document.getElementById('slugPreview').style.display = 'none'; document.getElementById('qrWrap').style.display = 'none'; return; }
+  var slug = code.toLowerCase().replace(/[^a-z0-9-]/g,'-');
+  var url = BASE_URL + slug;
+  document.getElementById('slugUrl').textContent = url;
+  document.getElementById('slugPreview').style.display = 'flex';
+  generateQR(url);
+  document.getElementById('qrWrap').style.display = 'flex';
+}
+
+// ── QR CODE ───────────────────────────────────────────────
+var qrInstance = null;
+function generateQR(url) {
+  var canvas = document.getElementById('qrCanvas');
+  canvas.innerHTML = '';
+  try {
+    if (qrInstance) { qrInstance.clear(); qrInstance.makeCode(url); }
+    else {
+      qrInstance = new QRCode(canvas, {
+        text: url, width: 78, height: 78,
+        colorDark: '#1e1e1e', colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    }
+  } catch(e) { console.warn('QR generation failed', e); }
+}
+
+function downloadQR() {
+  var canvas = document.querySelector('#qrCanvas canvas');
+  if (!canvas) { showToast('QR not ready yet','error'); return; }
+  var code = document.getElementById('fCode').value.trim() || 'qr-code';
+  var a = document.createElement('a');
+  a.href = canvas.toDataURL('image/png');
+  a.download = code + '-qr.png';
+  a.click();
+}
+
+function copySlug() {
+  var url = document.getElementById('slugUrl').textContent;
+  navigator.clipboard.writeText(url).then(function(){
+    showToast('Application link copied to clipboard');
+  });
+}
+
+// ── SAVE CAMPAIGN ─────────────────────────────────────────
+function saveCampaign() {
+  var title    = document.getElementById('fTitle').value.trim();
+  var code     = document.getElementById('fCode').value.trim();
+  var lob      = document.getElementById('fLOB').value;
+  var jobTitle = document.getElementById('fJobTitle').value.trim();
+
+  if (!title || !code || !lob || !jobTitle) {
+    showToast('Please fill in all required fields (title, code, LOB, job title)', 'error');
+    return;
+  }
+
+  var slug = code.toLowerCase().replace(/[^a-z0-9-]/g,'-');
+  var payload = {
+    action:           'create_campaign',
+    CampaignCode:     code,
+    Title:            title,
+    LOB:              lob,
+    JobTitle:         jobTitle,
+    Department:       document.getElementById('fDept').value.trim() || null,
+    ReportsTo:        document.getElementById('fReportsTo').value.trim() || null,
+    ReportsToEmail:   document.getElementById('fReportsToEmail').value.trim() || null,
+    OfferedSalary:    parseFloat(document.getElementById('fSalary').value) || null,
+    StartDate:        document.getElementById('fStartDate').value || null,
+    TargetHeadcount:  parseInt(document.getElementById('fHeadcount').value) || null,
+    URLSlug:          slug,
+    AssessmentPassScore: parseFloat(document.getElementById('fPassScore').value) || null,
+    PivotalBatteryID: document.getElementById('fBatteryID').value.trim() || null,
+    CreatedBy:        'recruiter'
+  };
+
+  var btn = document.getElementById('saveBtn');
+  var res = document.getElementById('saveResult');
+  btn.disabled = true; btn.textContent = 'Creating…'; res.textContent = '';
+
+  // ── STUB: if no flow URL configured, simulate success so you can test the UI ──
+  if (FLOW.createCampaign.indexOf('PASTE') !== -1) {
+    setTimeout(function(){
+      btn.disabled = false; btn.textContent = 'Create campaign';
+      showToast('Campaign created (stub mode — wire up flow URL to persist to SQL)');
+      res.innerHTML = '<span class="save-ok">✓ Campaign created in stub mode</span>';
+      appendCampaignRow(payload, 0);
+      updateStats();
+      resetForm();
+    }, 600);
+    return;
+  }
+
+  fetch(FLOW.createCampaign, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    var data = d.body ? (typeof d.body==='string' ? JSON.parse(d.body) : d.body) : d;
+    if (data.CampaignID) {
+      showToast('Campaign created — ' + code);
+      res.innerHTML = '<span class="save-ok">✓ Campaign created. Application URL is live.</span>';
+      appendCampaignRow(payload, data.CampaignID);
+      updateStats();
+      resetForm();
+    } else {
+      throw new Error(data.error || 'Unknown error');
+    }
+    btn.disabled = false; btn.textContent = 'Create campaign';
+  })
+  .catch(function(err){
+    res.innerHTML = '<span class="save-err">✗ ' + err.message + '</span>';
+    showToast('Failed to create campaign', 'error');
+    btn.disabled = false; btn.textContent = 'Create campaign';
+  });
+}
+
+// ── LOAD CAMPAIGNS ────────────────────────────────────────
+function loadCampaigns() {
+  // Stub mode if flow URL not configured
+  if (FLOW.getCampaigns.indexOf('PASTE') !== -1) {
+    renderCampaigns([]);
+    updateStats();
+    return;
+  }
+
+  fetch(FLOW.getCampaigns, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({action:'get_campaigns'})
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    var body = d.body ? (typeof d.body==='string' ? JSON.parse(d.body) : d.body) : d;
+    var rows = (body.ResultSets && body.ResultSets.Table1) ? body.ResultSets.Table1 : (Array.isArray(body) ? body : []);
+    renderCampaigns(rows);
+    updateStats(rows);
+  })
+  .catch(function(){ renderCampaigns([]); });
+}
+
+function renderCampaigns(rows) {
+  var tbody = document.getElementById('campTableBody');
+  var tag   = document.getElementById('campCount');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="8">No campaigns yet — create one above to get started.</td></tr>';
+    tag.textContent = '0 campaigns';
+    return;
+  }
+  tag.textContent = rows.length + ' campaign' + (rows.length===1?'':'s');
+  tbody.innerHTML = rows.map(function(r){
+    var active = r.IsActive !== 0 && r.IsActive !== false;
+    var slug   = (r.URLSlug||'').toLowerCase();
+    var appUrl = BASE_URL + slug;
+    return '<tr class="' + (active?'':'inactive') + '">' +
+      '<td><a href="#" class="tbl-link">' + esc(r.Title||'') + '</a>' +
+        '<div style="font-size:11px;color:var(--text3);margin-top:2px">' + esc(r.CampaignCode||'') + '</div></td>' +
+      '<td><span class="lob-badge">' + esc(r.LOB||'') + '</span></td>' +
+      '<td>' + esc(r.JobTitle||'') + '</td>' +
+      '<td style="text-align:center">' + (r.TargetHeadcount||'—') + '</td>' +
+      '<td>' + (r.StartDate ? formatDate(r.StartDate) : '—') + '</td>' +
+      '<td><span class="' + (active?'active-dot':'inactive-dot') + '"></span>' + (active?'Active':'Paused') + '</td>' +
+      '<td style="text-align:center">' + (r.TotalApplications||0) + '</td>' +
+      '<td><div class="tbl-actions">' +
+        '<button class="btn-sm btn-sm-navy" onclick="copyLink(\'' + appUrl + '\')">Copy link</button>' +
+        '<button class="btn-sm btn-sm-ghost" onclick="toggleCampaign(' + r.CampaignID + ',' + (active?'false':'true') + ',this)">' + (active?'Pause':'Activate') + '</button>' +
+      '</div></td>' +
+    '</tr>';
+  }).join('');
+}
+
+function appendCampaignRow(p, id) {
+  var tbody = document.getElementById('campTableBody');
+  var empty = tbody.querySelector('.empty-row');
+  if (empty) empty.remove();
+  var slug = (p.URLSlug||'').toLowerCase();
+  var appUrl = BASE_URL + slug;
+  var tr = document.createElement('tr');
+  tr.innerHTML =
+    '<td><a href="#" class="tbl-link">' + esc(p.Title) + '</a>' +
+      '<div style="font-size:11px;color:var(--text3);margin-top:2px">' + esc(p.CampaignCode) + '</div></td>' +
+    '<td><span class="lob-badge">' + esc(p.LOB) + '</span></td>' +
+    '<td>' + esc(p.JobTitle) + '</td>' +
+    '<td style="text-align:center">' + (p.TargetHeadcount||'—') + '</td>' +
+    '<td>' + (p.StartDate ? formatDate(p.StartDate) : '—') + '</td>' +
+    '<td><span class="active-dot"></span>Active</td>' +
+    '<td style="text-align:center">0</td>' +
+    '<td><div class="tbl-actions">' +
+      '<button class="btn-sm btn-sm-navy" onclick="copyLink(\'' + appUrl + '\')">Copy link</button>' +
+      '<button class="btn-sm btn-sm-ghost" onclick="toggleCampaign(' + id + ',false,this)">Pause</button>' +
+    '</div></td>';
+  tbody.insertBefore(tr, tbody.firstChild);
+}
+
+// ── TOGGLE ACTIVE ─────────────────────────────────────────
+function toggleCampaign(id, newActive, btn) {
+  if (FLOW.toggleCampaign.indexOf('PASTE') !== -1) {
+    var row = btn.closest('tr');
+    row.classList.toggle('inactive');
+    btn.textContent = newActive ? 'Pause' : 'Activate';
+    btn.onclick = function(){ toggleCampaign(id, !newActive, btn); };
+    var dot = row.querySelector('.active-dot, .inactive-dot');
+    dot.className = newActive ? 'active-dot' : 'inactive-dot';
+    row.querySelectorAll('td')[5].innerHTML = '<span class="' + (newActive?'active-dot':'inactive-dot') + '"></span>' + (newActive?'Active':'Paused');
+    showToast('Campaign ' + (newActive ? 'activated' : 'paused') + ' (stub mode)');
+    return;
+  }
+  fetch(FLOW.toggleCampaign, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({action:'toggle_campaign', CampaignID: id, IsActive: newActive})
+  }).then(function(){ loadCampaigns(); })
+    .catch(function(){ showToast('Failed to update campaign', 'error'); });
+}
+
+// ── STATS ─────────────────────────────────────────────────
+function updateStats(rows) {
+  rows = rows || [];
+  var active = rows.filter(function(r){ return r.IsActive !== 0 && r.IsActive !== false; }).length;
+  var apps   = rows.reduce(function(s,r){ return s + (parseInt(r.TotalApplications)||0); }, 0);
+  document.getElementById('statTotal').textContent = rows.length;
+  document.getElementById('statActive').textContent = active;
+  document.getElementById('statApplications').textContent = apps;
+}
+
+// ── HELPERS ───────────────────────────────────────────────
+function resetForm() {
+  ['fTitle','fCode','fJobTitle','fDept','fHeadcount','fSalary','fStartDate',
+   'fReportsTo','fReportsToEmail','fPassScore','fBatteryID'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('fLOB').value = '';
+  document.getElementById('slugPreview').style.display = 'none';
+  document.getElementById('qrWrap').style.display = 'none';
+  document.getElementById('saveResult').textContent = '';
+  qrInstance = null;
+}
+
+function copyLink(url) {
+  navigator.clipboard.writeText(url).then(function(){
+    showToast('Application link copied');
+  });
+}
+
+function formatDate(d) {
+  if (!d) return '—';
+  try { return new Date(d).toLocaleDateString('en-ZA',{day:'2-digit',month:'short',year:'numeric'}); }
+  catch(e){ return d; }
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function showToast(msg, type) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (type==='error'?' error':'');
+  void t.offsetWidth;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+}
+</script>
+</body>
+</html>
