@@ -491,6 +491,7 @@ var STD_ROLES = {
 // State
 var currentCampaign = null;   // {CampaignID, CampaignCode, Title, LOB, Client}
 var campaignList = [];
+var loadedRoles = [];         // current campaign's roles, for advert lookup by RoleID
 
 // ── AUTH ──
 var AUTH_KEY='recruit_auth', AUTH_TOK='trilogy_recruit_2026';
@@ -719,14 +720,16 @@ function loadRoles(){
 
 function renderRoles(rows){
   var list=document.getElementById('rolesList');
-  if(!rows.length){ list.innerHTML='<div class="roles-empty">No roles added yet. Use the quick-add buttons above.</div>'; document.getElementById('roleCount').textContent='0 roles'; return; }
+  if(!rows.length){ loadedRoles=[]; list.innerHTML='<div class="roles-empty">No roles added yet. Use the quick-add buttons above.</div>'; document.getElementById('roleCount').textContent='0 roles'; return; }
   rows.sort(function(a,b){return (a.SeniorityRank||0)-(b.SeniorityRank||0);});
+  loadedRoles=rows.slice();
   document.getElementById('roleCount').textContent=rows.length+' role'+(rows.length===1?'':'s');
   list.innerHTML=rows.map(roleCardHTML).join('');
 }
 function appendRole(p){
   var list=document.getElementById('rolesList');
   var empty=list.querySelector('.roles-empty'); if(empty) list.innerHTML='';
+  loadedRoles.push(p);
   list.insertAdjacentHTML('beforeend', roleCardHTML(p));
   var n=list.querySelectorAll('.role-card').length;
   document.getElementById('roleCount').textContent=n+' role'+(n===1?'':'s');
@@ -744,15 +747,17 @@ function roleCardHTML(r){
     '</div>'+
     '<div class="role-actions">'+
       '<button class="btn-sm btn-sm-navy" onclick="copyLink(\''+BASE_URL+slug+'\')">Copy link</button>'+
-      '<button class="btn-sm btn-sm-green" onclick=\'openAdvert('+JSON.stringify(JSON.stringify(r))+')\'>Advert</button>'+
+      '<button class="btn-sm btn-sm-green" onclick="openAdvert('+(r.RoleID||0)+')">Advert</button>'+
     '</div>'+
     '<div class="role-apps"><div class="role-apps-num">'+(r.TotalApplications||0)+'</div><div class="role-apps-lbl">applied</div></div>'+
   '</div>';
 }
 
 // ── HELPERS ──
-function openAdvert(roleJson){
-  var r; try{ r = typeof roleJson==='string' ? JSON.parse(roleJson) : roleJson; }catch(e){ r={}; }
+function openAdvert(roleID){
+  var r=null;
+  for(var i=0;i<loadedRoles.length;i++){ if(String(loadedRoles[i].RoleID)===String(roleID)){ r=loadedRoles[i]; break; } }
+  if(!r){ showToast('Could not find that role','error'); return; }
   // enrich with campaign context for the advert
   if(currentCampaign){
     r.CampaignTitle = r.CampaignTitle || currentCampaign.Title;
