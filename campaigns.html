@@ -393,7 +393,7 @@ body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--
 //  HTTP trigger URLs before deploying
 // ══════════════════════════════════════════════════════════
 var FLOW = {
-  createCampaign:  'PASTE_CREATE_CAMPAIGN_FLOW_URL_HERE',
+  createCampaign:  'https://default77cde95f930f495e89c64d2c30f6df.21.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/5b8b5a271f944e0886a44923e439e47a/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=x8thLcOgvWWSip6L833Z-ptTwZftD_q7QXWdyLafgM0',
   getCampaigns:    'PASTE_GET_CAMPAIGNS_FLOW_URL_HERE',
   toggleCampaign:  'PASTE_TOGGLE_CAMPAIGN_FLOW_URL_HERE'
 };
@@ -543,15 +543,18 @@ function saveCampaign() {
   })
   .then(function(r){ return r.json(); })
   .then(function(d){
-    var data = d.body ? (typeof d.body==='string' ? JSON.parse(d.body) : d.body) : d;
-    if (data.CampaignID) {
+    // Unwrap: body -> ResultSets -> Table1 -> first row (matches HR portal pattern)
+    var body = d.body ? (typeof d.body==='string' ? JSON.parse(d.body) : d.body) : d;
+    var rows = (body.ResultSets && body.ResultSets.Table1) ? body.ResultSets.Table1 : (Array.isArray(body) ? body : [body]);
+    var row = rows[0] || {};
+    if (row.Result === 'Success' && row.CampaignID) {
       showToast('Campaign created — ' + code);
       res.innerHTML = '<span class="save-ok">✓ Campaign created. Application URL is live.</span>';
-      appendCampaignRow(payload, data.CampaignID);
+      appendCampaignRow(payload, row.CampaignID);
       updateStats();
       resetForm();
     } else {
-      throw new Error(data.error || 'Unknown error');
+      throw new Error(row.Message || 'Unknown error');
     }
     btn.disabled = false; btn.textContent = 'Create campaign';
   })
