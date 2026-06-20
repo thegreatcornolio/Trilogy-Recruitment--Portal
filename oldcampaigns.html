@@ -744,24 +744,13 @@ function roleCardHTML(r){
     '</div>'+
     '<div class="role-actions">'+
       '<button class="btn-sm btn-sm-navy" onclick="copyLink(\''+BASE_URL+slug+'\')">Copy link</button>'+
-      '<button class="btn-sm btn-sm-green" onclick=\'openAdvert('+JSON.stringify(JSON.stringify(r))+')\'>Advert</button>'+
+      '<button class="btn-sm btn-sm-green" onclick="showToast(\'Advert generator coming next\')">Advert</button>'+
     '</div>'+
     '<div class="role-apps"><div class="role-apps-num">'+(r.TotalApplications||0)+'</div><div class="role-apps-lbl">applied</div></div>'+
   '</div>';
 }
 
 // ── HELPERS ──
-function openAdvert(roleJson){
-  var r; try{ r = typeof roleJson==='string' ? JSON.parse(roleJson) : roleJson; }catch(e){ r={}; }
-  // enrich with campaign context for the advert
-  if(currentCampaign){
-    r.CampaignTitle = r.CampaignTitle || currentCampaign.Title;
-    r.LOB = r.LOB || currentCampaign.LOB;
-    r.Client = r.Client || currentCampaign.Client;
-  }
-  sessionStorage.setItem('advert_role', JSON.stringify(r));
-  window.location.href='advert.html';
-}
 function copyLink(url){ navigator.clipboard.writeText(url).then(function(){showToast('Application link copied');}); }
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function showToast(msg,type){
