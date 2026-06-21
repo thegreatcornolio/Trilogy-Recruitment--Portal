@@ -427,7 +427,7 @@ function init(){
   }
   document.getElementById('iSalary').value=sal;
   document.getElementById('iLocation').value=(role.LOB||role.RoleCategory||'');
-  document.getElementById('iApply').value='recruitment.trilogybpo.com/apply/'+(role.URLSlug||'').toLowerCase();
+  document.getElementById('iApply').value='recruitment.trilogybpo.com/apply.html?role='+(role.URLSlug||'').toLowerCase();
   render();
 }
 
