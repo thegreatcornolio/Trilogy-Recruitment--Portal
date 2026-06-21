@@ -107,7 +107,7 @@ body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--
 .preview-frame{background:repeating-conic-gradient(#dddcd8 0% 25%,#e8e7e3 0% 50%) 50%/24px 24px;border-radius:var(--radius-lg);padding:1.5rem;display:flex;justify-content:center;overflow:auto;max-width:100%}
 
 /* ════════ THE ADVERT ════════ */
-#advert{width:1080px;background:var(--navy);color:#fff;position:relative;overflow:hidden;font-family:'Wix Madefor Text',sans-serif;flex-shrink:0;transform-origin:top left}
+#advert{width:1080px;background:var(--navy);color:#fff;position:relative;overflow:hidden;font-family:'Wix Madefor Text',sans-serif;flex-shrink:0;transform-origin:top center}
 #advert.fmt-square{height:1080px}
 #advert.fmt-portrait{height:1350px}
 #advert.fmt-story{height:1920px}
@@ -214,7 +214,7 @@ body{font-family:'Wix Madefor Text',sans-serif;background:var(--bg);color:var(--
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-left">
-    <a href="campaigns.html" class="nav-back" title="Back to Campaign Manager">←</a>
+    <a href="oldcampaigns.html" class="nav-back" title="Back to Campaign Manager">←</a>
     <img src="trilogy-logo.png" alt="Trilogy BPO" class="nav-logo">
     <div class="nav-divider"></div><div class="nav-section">Recruitment Portal</div>
     <div class="nav-divider"></div><div class="nav-section" style="color:rgba(255,255,255,.6)">Advert Generator</div>
@@ -611,14 +611,9 @@ function parseFlow(txt){
 // ── PREVIEW SCALE ──
 function scalePreview(){
   var ad=document.getElementById('advert'), frame=ad.parentElement;
-  var availW=frame.clientWidth-48;
-  var availH=window.innerHeight-200;            // leave room for nav + label + padding
-  var scale=Math.min(1, availW/1080, availH/FORMATS[fmt].h);
-  if(scale<0.1) scale=0.1;
+  var scale=Math.min(1,(frame.clientWidth-48)/1080);
   ad.style.transform='scale('+scale+')';
-  // collapse the empty space the transform leaves behind
   ad.style.marginBottom=(-(FORMATS[fmt].h*(1-scale)))+'px';
-  ad.style.marginRight=(-(1080*(1-scale)))+'px';
 }
 window.addEventListener('resize',scalePreview);
 

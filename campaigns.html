@@ -765,7 +765,7 @@ function openAdvert(roleID){
     r.Client = r.Client || currentCampaign.Client;
   }
   sessionStorage.setItem('advert_role', JSON.stringify(r));
-  window.location.href='advert.html';
+  window.location.href='advert.html?v='+Date.now();
 }
 function copyLink(url){ navigator.clipboard.writeText(url).then(function(){showToast('Application link copied');}); }
 function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
