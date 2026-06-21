@@ -399,7 +399,7 @@ function doLogin(){
     setTimeout(function(){g.style.display='none';},300); init();
   } else { document.getElementById('login-err').style.display='block'; document.getElementById('pwd').value=''; }
 }
-(function(){ if(sessionStorage.getItem(AUTH_KEY)===AUTH_TOK){ document.getElementById('login-gate').style.display='none'; init(); } })();
+(function(){ /* auto-init moved to end of script, after state + functions are defined */ })();
 
 // ── STATE ──
 var fmt='portrait', layout='classic', role=null;
@@ -650,6 +650,9 @@ function advertFilename(){ var t=(document.getElementById('iTitle').value||'adve
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function showToast(msg,type){var t=document.getElementById('toast');t.textContent=msg;t.className='toast'+(type==='error'?' error':'');void t.offsetWidth;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},3000);}
 setTimeout(scalePreview,300);
+
+// ── AUTO-INIT (runs last, after all state + functions defined) ──
+if(sessionStorage.getItem(AUTH_KEY)===AUTH_TOK){ document.getElementById('login-gate').style.display='none'; init(); }
 </script>
 </body>
 </html>
