@@ -310,7 +310,7 @@ function submitApp(){
     FirstName:first, LastName:last, PreferredName:val('fPreferred'),
     IDType:idType, IDNumber:id, DateOfBirth:dob, Gender:gender,
     Mobile:mobile, PersonalEmail:email,
-    CurrentlyEmployed: employed===null?null:(employed?1:0),
+    CurrentlyEmployed: employed===null?null:(employed?true:false),
     HighestQualification:val('fQual'), NoticePeriod:val('fNotice'),
     POPIAConsentIP:null
   };
